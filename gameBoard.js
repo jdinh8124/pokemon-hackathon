@@ -85,22 +85,29 @@ class GameBoard{
   pokemonBattle(pokemon1, pokemon2, turn){
 
     // console.log(pokemon1, pokemon2);
-    var pokemon1Damge = pokemon1.attack - Math.floor(pokemon1.defense / 1.5);
-    var pokemon2Damge = pokemon2.attack - Math.floor(pokemon1.defense / 1.5);
+    var pokemon1Damage = pokemon1.attack - Math.floor(pokemon1.defense / 1.5);
+    var pokemon2Damage = pokemon2.attack - Math.floor(pokemon1.defense / 1.5);
+    if (pokemon1Damage <= 0){
+      pokemon1Damage = 2;
+    }
+    if (pokemon2Damage <= 0) {
+      pokemon2Damage = 2;
+    }
+
     var battleText = $("<div>");
     console.log(turn);
     if(turn === 1){
       // console.log("p1dmg" + pokemon1Damge);
       console.log(pokemon1.name + " attacked!");
       $(".textModalContent").text(pokemon1.name + " attacked!");
-      pokemon2.hp -= pokemon1Damge;
+      pokemon2.hp -= pokemon1Damage;
       console.log(pokemon2.name + " hp: " + pokemon2.hp);
       $(".textModalContent").append(battleText.text(pokemon2.name + " hp: " + pokemon2.hp));
     } else if (turn === 2){
       // console.log("p2dmg" + pokemon2Damge);
       console.log(pokemon2.name + " attacked!");
       $(".textModalContent").text(pokemon2.name + " attacked!");
-      pokemon1.hp -= pokemon2Damge;
+      pokemon1.hp -= pokemon2Damage;
       console.log(pokemon1.name + " hp: " + pokemon1.hp);
       $(".textModalContent").append(battleText.text(pokemon1.name + " hp: " + pokemon1.hp));
     }
@@ -141,7 +148,6 @@ class GameBoard{
       $(".textModalContent").text(pokemon2.name + " wins! Good job, Player 2");
     }
 
-    $("footer .textModal").append(this.closeModalButton());
 
   }
 

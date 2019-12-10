@@ -96,7 +96,17 @@ class Pokemon{
     var pokemonToField = $("<div>")
     .css("background-image", 'url(' + this.frontSprite + ')')
     .addClass("pokemonInArena");
-    $(".gameContainer").append(pokemonToField);
+
+
+    if(this.playerNum % 2 === 0){
+      $(".p2Fighter1")
+      .toggleClass("hidden")
+      .css("background-image", 'url(' + this.frontSprite + ')');
+    } else {
+      $(".p1Fighter1")
+      .toggleClass("hidden")
+      .css("background-image", 'url(' + this.frontSprite + ')');
+    }
   }
 
   getStats(){
