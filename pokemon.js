@@ -15,11 +15,12 @@ class Pokemon{
   this.hp = null;
   this.specialDefense = null;
   this.defense = null;
+  this.elementType = null;
+  this.elementInfo = null
 
   this.renderPokemon = this.renderPokemon.bind(this);
-
-    this.getPokemonFromServer = this.getPokemonFromServer.bind(this);
-    this.getPokemonFromServer(this.randomPokeNum);
+  this.getPokemonFromServer = this.getPokemonFromServer.bind(this);
+  this.getPokemonFromServer(this.randomPokeNum);
 }
 
   getPokemonFromServer(){
@@ -46,6 +47,9 @@ class Pokemon{
     this.hp = response.stats[5].base_stat;
     this.specialDefense = response.stats[1].base_stat;
     this.defense = response.stats[3].base_stat;
+
+    this.elementType = response.types[0].type.name;
+    this.elementInfo = response.types[0].type.url;
   }
 
 

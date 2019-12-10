@@ -49,21 +49,25 @@ class GameBoard{
 
 
     console.log(pokemon1, pokemon2);
-    if(pokemon1.speed > pokemon2.speed){
-      console.log("pokemon 1 attacked!");
-      pokemon2.hp -= pokemon1.attack;
-      console.log("pokemon 2 hp: " + pokemon2.hp);
+    var pokemon1Damge = pokemon1.attack - (pokemon2.defense/2);
+    var pokemon2Damge = pokemon2.attack - (pokemon1.defense / 2);
 
-      console.log("pokemon 2 attacked!");
-      pokemon1.hp -= pokemon2.attack;
-      console.log("pokemon 1 hp: " + pokemon1.hp);
+    if(pokemon1.speed > pokemon2.speed){
+      console.log(pokemon1.name + " attacked!");
+      pokemon2.hp -= pokemon1Damge;
+      console.log(pokemon2.name + " hp: " + pokemon2.hp);
+
+      console.log(pokemon2.name + " attacked!");
+      pokemon1.hp -= pokemon2Damge;
+      console.log(pokemon1.name + " hp: " + pokemon1.hp);
     } else {
-      console.log("pokemon 2 attacked!");
-      pokemon1.hp -= pokemon2.attack;
-      console.log("pokemon 1 hp: " + pokemon1.hp);
-      console.log("pokemon 1 attacked!");
-      pokemon2.hp -= pokemon1.attack;
-      console.log("pokemon 2 hp: " + pokemon2.hp);
+      console.log(pokemon2.name + " attacked!");
+      pokemon1.hp -= pokemon2Damge;
+      console.log(pokemon1.name + " hp: " + pokemon1.hp);
+
+      console.log(pokemon1.name + " attacked!");
+      pokemon2.hp -= pokemon1Damge;
+      console.log(pokemon2.name + " hp: " + pokemon2.hp);
     }
     var current = this;
     setTimeout(function(){
@@ -72,7 +76,7 @@ class GameBoard{
   }
 
   battleAgain(pokemon1, pokemon2){
-    if (pokemon1.health > 0 && pokemon2.health > 0) {
+    if (pokemon1.hp > 0 && pokemon2.hp > 0) {
       console.log("round2");
       this.pokemonBattle(pokemon1, pokemon2);
     } else {
@@ -82,7 +86,7 @@ class GameBoard{
 
   endFight(pokemon1, pokemon2){
     this.pokemonToFight = [];
-    if(pokemon1.health === 0){
+    if(pokemon1.hp >= 0){
       console.log("player 2 win");
     } else {
       console.log("player 1 win");
