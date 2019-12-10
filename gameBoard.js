@@ -8,8 +8,8 @@ class GameBoard{
 
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
-    $('html').on("keydown", this.handleKeyPress);
+    // this.handleKeyPress = this.handleKeyPress.bind(this);
+    // $('html').on("keydown", this.handleKeyPress);
   }
 
   gameSetup(){
@@ -39,16 +39,20 @@ class GameBoard{
     return pokemon;
   }
 
-  handleKeyPress(event){
-    if(event.key == "p"){
-      var turn = 0;
-      if (this.pokemonToFight[0].speed > this.pokemonToFight[1].speed){
-        turn = 1;
-      } else {
-        turn = 2;
-      }
-      this.pokemonBattle(this.pokemonToFight[0], this.pokemonToFight[1], turn);
+  prepBattle(){
+
+    var turn = 0;
+    if (this.pokemonToFight[0].speed > this.pokemonToFight[1].speed){
+      turn = 1;
+    } else {
+      turn = 2;
     }
+    $(".textModalContent").text("The Battle will begin now!");
+    var toBattle = this;
+    setTimeout(function(){
+      toBattle.pokemonBattle(toBattle.pokemonToFight[0], toBattle.pokemonToFight[1], turn);
+    }, 1500);
+
   }
 
   addPokemonToArena(pokemon){
@@ -68,7 +72,7 @@ class GameBoard{
     pokemon.toGameBoard();
     console.log(pokemon.name + " is ready to fight!");
     if (this.pokemonToFight.length === 2){
-      console.log("ready! p to fight");
+      this.prepBattle();
     }
   }
 
@@ -104,7 +108,7 @@ class GameBoard{
     var current = this;
     setTimeout(function () {
       current.checkFaint(pokemon1, pokemon2, turn);
-    }, 1000);
+    }, 1500);
   }
 
   checkFaint(pokemon1, pokemon2, turn){
