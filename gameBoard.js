@@ -49,8 +49,8 @@ class GameBoard{
 
 
     console.log(pokemon1, pokemon2);
-    var pokemon1Damge = pokemon1.attack - (pokemon2.defense/2);
-    var pokemon2Damge = pokemon2.attack - (pokemon1.defense / 2);
+    var pokemon1Damge = pokemon1.attack - Math.floor(pokemon2.defense/3);
+    var pokemon2Damge = pokemon2.attack - Math.floor(pokemon1.defense / 3);
 
     if(pokemon1.speed > pokemon2.speed){
       console.log(pokemon1.name + " attacked!");
