@@ -30,6 +30,7 @@ class GameBoard{
     //pokemon renders
     this.pokemonPool.push(pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6);
     console.log(this.pokemonPool);
+
   }
 
   createPokemon() {
@@ -40,6 +41,9 @@ class GameBoard{
   }
 
   prepBattle(){
+    var backgroundMusic = new Audio("assets/pokemonbattle.mp3");
+    backgroundMusic.play()
+    console.log("waiting on music")
 
     var turn = 0;
     if (this.pokemonToFight[0].speed > this.pokemonToFight[1].speed){
@@ -83,8 +87,6 @@ class GameBoard{
   }
 
   pokemonBattle(pokemon1, pokemon2, turn){
-    var backgroundMusic = new Audio("assets/All Pokémon Wild Battle Themes [GEN 1-7].mp3");
-    backgroundMusic.play()
     // console.log(pokemon1, pokemon2);
     var pokemon1Damge = pokemon1.attack - Math.floor(pokemon1.defense / 1.5);
     var pokemon2Damge = pokemon2.attack - Math.floor(pokemon1.defense / 1.5);
