@@ -86,6 +86,10 @@ body{
   border-radius: 5%;
   background-color: rgb(230, 219, 234);
   margin: 0 0 0 2%;
+  background-image: url("./assets/uzairProfile.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .gameContainer{
@@ -128,6 +132,10 @@ body{
   background-color: rgb(230, 219, 234);
   border-radius: 5%;
   margin: 0 2% 0 0 ;
+  background-image: url("./assets/codyProfile.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .textModal{
@@ -293,4 +301,14 @@ body{
     from { background-position: 64px 64px; }
     to { background-position: 64px 1088px; }
 
+}
+
+.closeModalButton{
+	background-color: grey;
+	margin: 1% auto;
+	cursor: pointer;
+	color: white;
+	font-size: 14px;
+	border-radius: 2%;
+	width: 50%;
 }

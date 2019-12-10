@@ -128,13 +128,22 @@ class GameBoard{
 
   endFight(pokemon1, pokemon2){
     this.pokemonToFight = [];
+    this.pokemonPool = [];
     if(pokemon1.hp >= pokemon2.hp){
       console.log(pokemon1.name+"! Player 1 wins");
+      $(".winModal").toggleClass("hidden");
+      $(".tacoModal").toggleClass("hidden");
       $(".textModalContent").text(pokemon1.name + " wins! Nice work, Player 1");
     } else {
       console.log(pokemon2.name +"! Player 2 wins");
+      $(".winModal").toggleClass("hidden");
+      $(".tacoModal").toggleClass("hidden");
       $(".textModalContent").text(pokemon2.name + " wins! Good job, Player 2");
     }
+
+    $("footer .textModal").append(this.closeModalButton());
+
   }
+
 
 }
