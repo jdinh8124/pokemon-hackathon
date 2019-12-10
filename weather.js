@@ -25,7 +25,7 @@ class Weather{
       // data: {
       //   APPID:
       // },
-      success: response => console.log(response),
+      success: this.renderWeathersuccess,
       error: this.renderWeatherFail,
 
     })
@@ -33,8 +33,8 @@ class Weather{
 
   renderWeathersuccess(response){
     console.log(response);
-    // this.wind = null;
-    // this.weather = null;
+    this.wind = response.wind.speed;
+    this.weather = response.weather[0].main;
   }
 
   renderWeatherFail(response){
