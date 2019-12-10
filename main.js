@@ -7,7 +7,9 @@ function initializeApp(){
 }
 
 // function coords(event){
-
-
 // var maps = new Maps(80, -120)
 // }
+function startTacoVideo(){
+  $("iframe").attr('src', "https://www.youtube.com/embed/npjF032TDDQ?&autoplay=1")
+}
+
