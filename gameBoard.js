@@ -68,7 +68,7 @@ class GameBoard{
       $("#icon" + 4).off("click").addClass("unselectable");
       $("#icon" + 6).off("click").addClass("unselectable");
     }
-    $("#icon" + pokemon.playerNum).addClass("selected");
+    $("#icon" + pokemon.playerNum).addClass("selected").removeClass("shadowed");
     pokemon.toGameBoard();
     console.log(pokemon.name + " is ready to fight!");
     if (this.pokemonToFight.length === 2){
@@ -128,13 +128,22 @@ class GameBoard{
 
   endFight(pokemon1, pokemon2){
     this.pokemonToFight = [];
+    this.pokemonPool = [];
     if(pokemon1.hp >= pokemon2.hp){
       console.log(pokemon1.name+"! Player 1 wins");
+      $(".winModal").toggleClass("hidden");
+      $(".tacoModal").toggleClass("hidden");
       $(".textModalContent").text(pokemon1.name + " wins! Nice work, Player 1");
     } else {
       console.log(pokemon2.name +"! Player 2 wins");
+      $(".winModal").toggleClass("hidden");
+      $(".tacoModal").toggleClass("hidden");
       $(".textModalContent").text(pokemon2.name + " wins! Good job, Player 2");
     }
+
+    $("footer .textModal").append(this.closeModalButton());
+
   }
+
 
 }
