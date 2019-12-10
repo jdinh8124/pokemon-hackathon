@@ -55,7 +55,17 @@ class Pokemon{
     this.elementType = response.types[0].type.name;
     this.elementInfo = response.types[0].type.url;
 
-    this.render();
+    //recursive func to ensure pokemon is not evolved
+    if(this.experience > 70){
+      this.randomPokeNum+=1;
+      this.getPokemonFromServer();
+      return;
+    }else{
+      this.render();
+      return;
+    }
+
+
   }
 
 

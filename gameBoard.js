@@ -41,12 +41,30 @@ class GameBoard{
 
   handleKeyPress(event){
     if(event.key == "p"){
-      this.pokemonBattle(this.pokemonToFight[0], this.pokemonToFight[1]);
+      var turn = 0;
+      if (this.pokemonToFight[0].speed > this.pokemonToFight[1].speed){
+        turn = 1;
+      } else {
+        turn = 2;
+      }
+      this.pokemonBattle(this.pokemonToFight[0], this.pokemonToFight[1], turn);
     }
   }
 
   addPokemonToArena(pokemon){
     this.pokemonToFight.push(pokemon);
+
+    console.log(pokemon.playerNum);
+    if(pokemon.playerNum % 2 !== 0){
+      $("#icon"+1).off("click").addClass("unselectable");
+      $("#icon" + 3).off("click").addClass("unselectable");
+      $("#icon" + 5).off("click").addClass("unselectable");
+    } else{
+      $("#icon" + 2).off("click").addClass("unselectable");
+      $("#icon" + 4).off("click").addClass("unselectable");
+      $("#icon" + 6).off("click").addClass("unselectable");
+    }
+    $("#icon" + pokemon.playerNum).addClass("selected");
     pokemon.toGameBoard();
     console.log(pokemon.name + " is ready to fight!");
     if (this.pokemonToFight.length === 2){
@@ -57,53 +75,61 @@ class GameBoard{
 
 
   randomPokemonNumber(){
-   return Math.floor(Math.random() * 10 + 1);
+   return Math.floor(Math.random() * 20 + 1);
   }
 
-  pokemonBattle(pokemon1, pokemon2){
+  pokemonBattle(pokemon1, pokemon2, turn){
 
-    console.log(pokemon1, pokemon2);
-    var pokemon1Damge = pokemon1.attack - Math.floor(pokemon2.defense/3);
-    var pokemon2Damge = pokemon2.attack - Math.floor(pokemon1.defense / 3);
-
-    if(pokemon1.speed > pokemon2.speed){
+    // console.log(pokemon1, pokemon2);
+    var pokemon1Damge = pokemon1.attack - Math.floor(pokemon1.defense / 1.5);
+    var pokemon2Damge = pokemon2.attack - Math.floor(pokemon1.defense / 1.5);
+    var battleText = $("<div>");
+    console.log(turn);
+    if(turn === 1){
+      // console.log("p1dmg" + pokemon1Damge);
       console.log(pokemon1.name + " attacked!");
+      $(".textModalContent").text(pokemon1.name + " attacked!");
       pokemon2.hp -= pokemon1Damge;
       console.log(pokemon2.name + " hp: " + pokemon2.hp);
-
+      $(".textModalContent").append(battleText.text(pokemon2.name + " hp: " + pokemon2.hp));
+    } else if (turn === 2){
+      // console.log("p2dmg" + pokemon2Damge);
       console.log(pokemon2.name + " attacked!");
+      $(".textModalContent").text(pokemon2.name + " attacked!");
       pokemon1.hp -= pokemon2Damge;
       console.log(pokemon1.name + " hp: " + pokemon1.hp);
-    } else {
-      console.log(pokemon2.name + " attacked!");
-      pokemon1.hp -= pokemon2Damge;
-      console.log(pokemon1.name + " hp: " + pokemon1.hp);
-
-      console.log(pokemon1.name + " attacked!");
-      pokemon2.hp -= pokemon1Damge;
-      console.log(pokemon2.name + " hp: " + pokemon2.hp);
+      $(".textModalContent").append(battleText.text(pokemon1.name + " hp: " + pokemon1.hp));
     }
+
     var current = this;
-    setTimeout(function(){
-      current.battleAgain(pokemon1, pokemon2);
+    setTimeout(function () {
+      current.checkFaint(pokemon1, pokemon2, turn);
     }, 1000);
   }
 
-  battleAgain(pokemon1, pokemon2){
+  checkFaint(pokemon1, pokemon2, turn){
     if (pokemon1.hp > 0 && pokemon2.hp > 0) {
       console.log("round2");
-      this.pokemonBattle(pokemon1, pokemon2);
+      if(turn === 1){
+        turn++;
+      } else {
+        turn--;
+      }
+      this.pokemonBattle(pokemon1, pokemon2, turn);
     } else {
       this.endFight(pokemon1, pokemon2);
     }
+
   }
 
   endFight(pokemon1, pokemon2){
     this.pokemonToFight = [];
     if(pokemon1.hp >= pokemon2.hp){
-      console.log(pokemon1.name+" wins");
+      console.log(pokemon1.name+"! Player 1 wins");
+      $(".textModalContent").text(pokemon1.name + " wins! Nice work, Player 1");
     } else {
-      console.log(pokemon2.name +" wins");
+      console.log(pokemon2.name +"! Player 2 wins");
+      $(".textModalContent").text(pokemon2.name + " wins! Good job, Player 2");
     }
   }
 
