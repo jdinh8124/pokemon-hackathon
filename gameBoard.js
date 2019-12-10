@@ -7,6 +7,8 @@ class GameBoard{
 
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    $('html').on("keydown", this.handleKeyPress);
   }
 
   gameSetup(){
@@ -18,26 +20,29 @@ class GameBoard{
     this.addPokemonToArena(pokemon1, pokemon2);
   }
 
-  addPokemonToArena(pokemon1, pokemon2){
-    this.pokemonToFight.push(pokemon1, pokemon2);
-
-    if (this.pokemonToFight.length === 2){
+  handleKeyPress(event){
+    if(event.key == "x"){
       this.pokemonBattle(this.pokemonToFight[0], this.pokemonToFight[1]);
     }
   }
 
-  createPokemon(){
-    var pokemon = {
-      health:  2,
-      attack: 1,
-      speed: Math.floor(Math.random() * 5 + 1)
+  addPokemonToArena(pokemon1, pokemon2){
+    this.pokemonToFight.push(pokemon1, pokemon2);
 
+    if (this.pokemonToFight.length === 2){
+      console.log("ready! x to fight");
     }
+  }
+
+  createPokemon(){
+    var pokeId = this.randomPokemonNumber();
+
+    var pokemon = new Pokemon(this.playerNumber, pokeId);
     return pokemon;
   }
 
   randomPokemonNumber(){
-    Math.floor(Math.random() * 10 + 1);
+   return Math.floor(Math.random() * 10 + 1);
   }
 
   pokemonBattle(pokemon1, pokemon2){
@@ -46,19 +51,19 @@ class GameBoard{
     console.log(pokemon1, pokemon2);
     if(pokemon1.speed > pokemon2.speed){
       console.log("pokemon 1 attacked!");
-      pokemon2.health -= pokemon1.attack;
-      console.log("pokemon 2 hp: " + pokemon2.health);
+      pokemon2.hp -= pokemon1.attack;
+      console.log("pokemon 2 hp: " + pokemon2.hp);
 
       console.log("pokemon 2 attacked!");
-      pokemon1.health -= pokemon2.attack;
-      console.log("pokemon 1 hp: " + pokemon1.health);
+      pokemon1.hp -= pokemon2.attack;
+      console.log("pokemon 1 hp: " + pokemon1.hp);
     } else {
       console.log("pokemon 2 attacked!");
-      pokemon1.health -= pokemon2.attack;
-      console.log("pokemon 1 hp: " + pokemon1.health);
+      pokemon1.hp -= pokemon2.attack;
+      console.log("pokemon 1 hp: " + pokemon1.hp);
       console.log("pokemon 1 attacked!");
-      pokemon2.health -= pokemon1.attack;
-      console.log("pokemon 2 hp: " + pokemon2.health);
+      pokemon2.hp -= pokemon1.attack;
+      console.log("pokemon 2 hp: " + pokemon2.hp);
     }
     var current = this;
     setTimeout(function(){
