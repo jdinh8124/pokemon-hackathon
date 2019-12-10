@@ -8,6 +8,7 @@ class Weather{
   this.lon = lon;
   this.wind = null;
   this.weather = null;
+  this.background = null;
 
     this.getWeatherFromServer = this.getWeatherFromServer.bind(this);
     this.renderWeathersuccess = this.renderWeathersuccess.bind(this);
@@ -35,10 +36,26 @@ class Weather{
     console.log(response);
     this.wind = response.wind.speed;
     this.weather = response.weather[0].main;
+    this.backgroundImages()
+    // clouds, rain, clear
   }
 
   renderWeatherFail(response){
     console.log(response.responseText);
   }
+
+  backgroundImages() {
+
+    debugger;
+    if (this.weather === "clouds") {
+      $("body").css("background-image", "./assets/173154.jpg")
+    } else if (this.weather === "rain") {
+      $("body").css("background-image", "./assets/173154.jpg")
+    } else {
+      $("body").css("background-image", "assets/173154.jpg")
+      console.log(this.weather);
+    }
+  }
+
 
 }
