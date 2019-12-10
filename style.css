@@ -196,6 +196,31 @@ body{
 
 
 
+.textModalStats{
+  display: flex;
+  height:45%;
+  width:15%;
+  font-size: 2vw;
+  flex-direction: column;
+  position: fixed;
+
+  justify-content: center;
+  opacity: 0.9;
+  background-color: rgb(237, 225, 190);
+  z-index: 1;
+  top: 25vh;
+  left: 83vw;
+  border-radius: 12%/50% 7px;
+  border: 3px solid black;
+  box-shadow: 10px 5px 5px grey;
+  overflow: hidden;
+}
+.statsInside{
+  font-size: 5px;
+
+  padding-right: 5px;
+}
+
 
 /* playing with snow and rain effects */
 
@@ -217,7 +242,7 @@ body{
   border: 3px solid goldenrod;
   opacity: 90%;
 
-
+}
 .weather {
     position: relative; overflow: hidden;
 }

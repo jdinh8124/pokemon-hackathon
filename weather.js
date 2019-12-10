@@ -47,13 +47,17 @@ class Weather{
   weatherModal() {
     if (this.weather === "Clouds") {
       $(".gameContainer").addClass("weather rain");
+      $(".weatherStats").append(weatherImg)
     } else if (this.weather === "Rain") {
       $(".gameContainer").addClass("weather rain");
+      $(".weatherStats").append(weatherImg)
     } else if (this.weather === "Snow"){
       $(".gameContainer").addClass("weather snow");
+      $(".weatherStats").append(weatherImg)
     }
     else {
       $(".gameContainer").addClass("weather rain");
+      $(".weatherStats").append(weatherImg)
     }
   }
   cityBackground(){
