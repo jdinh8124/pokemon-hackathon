@@ -135,12 +135,23 @@ body{
   justify-content: center;
   opacity: 0.9;
   background-color: rgb(237, 225, 190);
-  z-index: 4;
+  z-index: 1;
   top: 24vh;
   left: 2vw;
   border-radius: 12%/50% 7px;
   border: 3px solid black;
   box-shadow: 10px 5px 5px grey;
+}
+.winModal{
+  display: flex;
+  position: fixed;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(237, 225, 190);
+  top: 14%;
+  left: 6%;
+  z-index: 2;
 }
 .hidden{
   display:none;
