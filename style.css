@@ -195,6 +195,10 @@ body{
 }
 
 
+
+
+/* playing with snow and rain effects */
+
 .pokemonInArena{
   margin: auto;
   height: 45%;
@@ -212,6 +216,7 @@ body{
 .selected{
   border: 3px solid goldenrod;
   opacity: 90%;
+
 
 .weather {
     position: relative; overflow: hidden;

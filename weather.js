@@ -36,25 +36,26 @@ class Weather{
     console.log(response);
     this.wind = response.wind.speed;
     this.weather = response.weather[0].main;
-    this.cityBackground()
+    this.cityBackground();
+    this.weatherModal();
     // clouds, rain, clear
   }
 
   renderWeatherFail(response){
     console.log(response.responseText);
   }
-  // weatherModal() {
-  //   if (this.weather === "Clouds") {
-
-  //   } else if (this.weather === "Rain") {
-  //     $(".gameContainer").css("background-image", 'url(' + "assets/173154.jpg" + ')').css("background-size", "contain");
-  //   } else if (this.weather === "Snow"){
-  //     $(".gameContainer").css("background-image", 'url(' + "assets/173154.jpg" + ')').css("background-size", "contain");
-  //   }
-  //   else {
-  //     $(".gameContainer").css("background-image", 'url(' + "assets/173154.jpg" + ')').css("background-size", "cover");
-  //   }
-  // }
+  weatherModal() {
+    if (this.weather === "Clouds") {
+      $(".gameContainer").addClass("weather rain");
+    } else if (this.weather === "Rain") {
+      $(".gameContainer").addClass("weather rain");
+    } else if (this.weather === "Snow"){
+      $(".gameContainer").addClass("weather snow");
+    }
+    else {
+      $(".gameContainer").addClass("weather rain");
+    }
+  }
   cityBackground(){
     //LA STAPLE CENTER
     if (this.lat === 34.052235 && this.lon === -118.2445) {
