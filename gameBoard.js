@@ -35,36 +35,11 @@ class GameBoard{
   createPokemon() {
     var pokeId = this.randomPokemonNumber();
 
-    var pokemon = new Pokemon(this.playerNumber, pokeId);
+    var pokemon = new Pokemon(this.playerNumber, pokeId, this.addPokemonToArena);
     return pokemon;
   }
 
   handleKeyPress(event){
-    if (event.key == "1") {
-      this.addPokemonToArena(this.pokemonPool[0]);
-      console.log(this.pokemonPool[0].name+" is ready to fight!");
-    }
-    if (event.key == "4") {
-      this.addPokemonToArena(this.pokemonPool[1]);
-      console.log(this.pokemonPool[1].name + " is ready to fight!");
-    }
-    if (event.key == "2") {
-      this.addPokemonToArena(this.pokemonPool[2]);
-      console.log(this.pokemonPool[2].name + " is ready to fight!");
-    }
-    if (event.key == "5") {
-      this.addPokemonToArena(this.pokemonPool[3]);
-      console.log(this.pokemonPool[3].name + " is ready to fight!");
-    }
-    if (event.key == "3") {
-      this.addPokemonToArena(this.pokemonPool[4]);
-      console.log(this.pokemonPool[4].name + " is ready to fight!");
-    }
-    if (event.key == "6") {
-      this.addPokemonToArena(this.pokemonPool[5]);
-      console.log(this.pokemonPool[5].name + " is ready to fight!");
-    }
-
     if(event.key == "p"){
       this.pokemonBattle(this.pokemonToFight[0], this.pokemonToFight[1]);
     }
@@ -72,7 +47,8 @@ class GameBoard{
 
   addPokemonToArena(pokemon){
     this.pokemonToFight.push(pokemon);
-
+    pokemon.toGameBoard();
+    console.log(pokemon.name + " is ready to fight!");
     if (this.pokemonToFight.length === 2){
       console.log("ready! p to fight");
     }

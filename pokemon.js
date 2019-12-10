@@ -1,7 +1,8 @@
 class Pokemon{
   constructor(
     playerNum,
-    randomPokeNum
+    randomPokeNum,
+    addToArena = () => { }
     )
 {
   this.playerNum = playerNum;
@@ -15,8 +16,10 @@ class Pokemon{
   this.hp = null;
   this.specialDefense = null;
   this.defense = null;
+  this.experience = null;
   this.elementType = null;
   this.elementInfo = null
+  this.addToArena = addToArena;
 
   this.renderPokemon = this.renderPokemon.bind(this);
   this.getPokemonFromServer = this.getPokemonFromServer.bind(this);
@@ -48,6 +51,7 @@ class Pokemon{
     this.specialDefense = response.stats[1].base_stat;
     this.defense = response.stats[3].base_stat;
 
+    this.experience = response.base_experience;
     this.elementType = response.types[0].type.name;
     this.elementInfo = response.types[0].type.url;
 
@@ -60,14 +64,35 @@ class Pokemon{
   }
 
   render(){
+    var current = this;
+    var thisPokemon = this.getStats();
     if(this.playerNum % 2 === 0){
-      $("#icon"+this.playerNum).css("background-image", 'url(' + this.backSprite + ')');
+
+      $("#icon"+this.playerNum)
+      .css("background-image", 'url(' + this.backSprite + ')')
+      .on("click", function(){
+        current.addToArena(thisPokemon);
+      });
     } else {
-      $("#icon" + this.playerNum).css("background-image", 'url(' + this.frontSprite + ')');
+      $("#icon" + this.playerNum)
+      .css("background-image", 'url(' + this.frontSprite + ')')
+      .on("click", function () {
+        current.addToArena(thisPokemon);
+      });
     }
   }
+
+  toGameBoard(){
+    var pokemonToField = $("<div>")
+    .css("background-image", 'url(' + this.frontSprite + ')')
+    .addClass("pokemonInArena");
+    $(".gameContainer").append(pokemonToField);
+  }
+
   getStats(){
+
     var pokeStats = {
+    playerNum: this.playerNum,
     name : this.name,
     attack : this.attack,
     specialAttack : this.specialAttack,
@@ -76,7 +101,8 @@ class Pokemon{
     speed : this.speed,
     hp: this.hp,
     specialDefense: this.specialDefense,
-    defense: this.defense
+    defense: this.defense,
+    toGameBoard: this.toGameBoard
     }
     return pokeStats;
   }
