@@ -18,7 +18,6 @@ class Taco{
   }
 
   proccessTacoSuccess(response){
-    console.log("response is: ", response);
     this.recipe = response.recipe;
       $(".tacoRecipe").text(this.recipe);
     this.baseLayerRecipe = response.base_layer.recipe;
