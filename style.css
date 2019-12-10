@@ -209,9 +209,37 @@ body{
 .hidden{
   display:none;
 }
+.textModalStats{
+  display: flex;
+  height:55%;
+  width:15%;
+  font-size: 4vmin;
+  flex-direction: column;
+  position: fixed;
+  border: 2px white solid;
+  justify-content: center;
+  text-align: center;
+  opacity: 0.9;
+  background-color: rgb(237, 225, 190);
+  z-index: 1;
+  top: 21vh;
+  left: 83vw;
+  border: 3px solid black;
+  box-shadow: 10px 5px 5px grey;
+  overflow: hidden;
+}
 
+.statsInside{
+  font-size: 5px;
+  padding-right: 5px;
+}
 
-
+.textModalStats > *{
+  border-top: black 1px solid;
+}
+.weatherStats{
+  border: none;
+}
 
 /* playing with snow and rain effects */
 
@@ -233,7 +261,7 @@ body{
   border: 3px solid goldenrod;
   opacity: 90%;
 
-
+}
 .weather {
     position: relative;
     overflow: hidden;
