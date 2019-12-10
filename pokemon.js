@@ -16,6 +16,8 @@ class Pokemon{
   this.specialDefense = null;
   this.defense = null;
 
+  this.renderPokemon = this.renderPokemon.bind(this);
+
     this.getPokemonFromServer = this.getPokemonFromServer.bind(this);
     this.getPokemonFromServer(this.randomPokeNum);
 }
@@ -34,7 +36,7 @@ class Pokemon{
 
 
   renderPokemon(response) {
-console.log(response);
+    console.log(response);
     this.name = response.name;
     this.attack = response.stats[4].base_stat;
     this.specialAttack = response.stats[2].base_stat;
