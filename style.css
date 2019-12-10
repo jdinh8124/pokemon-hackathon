@@ -157,6 +157,9 @@ body{
   display:none;
 }
 
+
+
+/* playing with snow and rain effects */
 .weather {
     position: relative; overflow: hidden;
 }
