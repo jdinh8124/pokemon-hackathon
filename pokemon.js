@@ -37,7 +37,7 @@ class Pokemon{
 
 
   renderPokemon(response) {
-    console.log(response);
+    // console.log(response);
     this.name = response.name;
     this.attack = response.stats[4].base_stat;
     this.specialAttack = response.stats[2].base_stat;
@@ -50,6 +50,8 @@ class Pokemon{
 
     this.elementType = response.types[0].type.name;
     this.elementInfo = response.types[0].type.url;
+
+    this.render();
   }
 
 
@@ -57,11 +59,13 @@ class Pokemon{
     console.log(response.responseText);
   }
 
-  // render(){
-
-
-  //   // .append();
-  // }
+  render(){
+    if(this.playerNum % 2 === 0){
+      $("#icon"+this.playerNum).css("background-image", 'url(' + this.backSprite + ')');
+    } else {
+      $("#icon" + this.playerNum).css("background-image", 'url(' + this.frontSprite + ')');
+    }
+  }
   getStats(){
     var pokeStats = {
     name : this.name,
