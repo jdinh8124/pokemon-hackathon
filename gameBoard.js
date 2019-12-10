@@ -68,7 +68,7 @@ class GameBoard{
       $("#icon" + 4).off("click").addClass("unselectable");
       $("#icon" + 6).off("click").addClass("unselectable");
     }
-    $("#icon" + pokemon.playerNum).addClass("selected");
+    $("#icon" + pokemon.playerNum).addClass("selected").removeClass("shadowed");
     pokemon.toGameBoard();
     console.log(pokemon.name + " is ready to fight!");
     if (this.pokemonToFight.length === 2){
