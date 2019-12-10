@@ -3,7 +3,14 @@ $(document).ready(initializeApp);
 function initializeApp(){
   var game = new GameBoard();
   game.gameSetup();
+
+  var taco = new Taco
+  taco.getTacoFromServer();
+
+
+
   var weather = new Weather(-26.2051, 28.0497)
+
 }
 
 // function coords(event){

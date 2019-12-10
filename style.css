@@ -152,7 +152,27 @@ body{
   top: 14%;
   left: 6%;
   z-index: 2;
+  box-shadow: 10px 5px 5px grey;
 }
+.tacoModal{
+  font-size: 1em;
+  border: 3px solid black;
+  height: 85%;
+  width: 25%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  text-align: center;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(237, 225, 190);
+  top: 5%;
+  right: 3%;
+  z-index: 2;
+  box-shadow: 10px 5px 5px grey;
+}
+
 .hidden{
   display:none;
 }
