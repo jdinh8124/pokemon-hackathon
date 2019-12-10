@@ -36,4 +36,7 @@ class Weather{
   renderWeatherFail(response){
     console.log(response.responseText);
   }
+
+
+  //hello
 }
