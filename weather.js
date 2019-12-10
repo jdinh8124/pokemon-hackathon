@@ -46,14 +46,20 @@ class Weather{
   }
   weatherModal() {
     if (this.weather === "Clouds") {
-      $(".gameContainer").addClass("weather rain");
+      var weatherImg = $("<img>").attr("src", "assets/cloudy.PNG").attr("alt", "broken")
+      $(".weatherStats").append(weatherImg)
     } else if (this.weather === "Rain") {
       $(".gameContainer").addClass("weather rain");
+      var weatherImgRain = $("<img>").attr("src", "assets/rain.PNG").attr("alt", "broken");
+      $(".weatherStats").append(weatherImgRain)
     } else if (this.weather === "Snow"){
       $(".gameContainer").addClass("weather snow");
+      var weatherImgSnow = $("<img>").attr("src", "assets/snow.PNG").attr("alt", "broken");
+      $(".weatherStats").append(weatherImgSnow)
     }
     else {
-      $(".gameContainer").addClass("weather rain");
+      var weatherImgSun = $("<img>").attr("src", "assets/sunny.PNG").attr("alt", "broken");
+      $(".weatherStats").append(weatherImgSun)
     }
   }
   cityBackground(){

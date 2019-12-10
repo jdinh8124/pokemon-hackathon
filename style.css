@@ -55,17 +55,30 @@ body{
 #icon6{
   border-radius: 0 5% 5% 0;
 }
-
+.pokeIconBox{
+  display: flex;
+  height: 100%;
+  width: 33.3333333%;
+  background-color: rgb(230, 219, 234);
+  border: 3px solid black;
+}
 .pokeIcon{
   display: flex;
   height: 95%;
-  width: 33.333333333%;
-  border: 3px solid black;
-  background-color: rgb(230, 219, 234);
+  width: 100%;
+
+
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
 
+}
+
+.shadowed {
+	filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12,OffY=12,Color='#444')";
+	filter: url(#drop-shadow);
+	-webkit-filter: drop-shadow(12px 12px 7px rgba(0,0,0,0.5));
+	filter: drop-shadow(10px 12px 6px rgba(0,0,0,0.6));
 }
 
 .trainerIconContainer{
@@ -154,18 +167,21 @@ body{
   left: 2vw;
   border-radius: 12%/50% 7px;
   border: 3px solid black;
-  box-shadow: 10px 5px 5px grey;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612);
   overflow: hidden;
   scrollbar-track-color: antiquewhite;
 }
 .textModalContent{
   text-align: center;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   height: 99%;
   width: 100%;
   overflow-y: auto;
   padding-right: 5px;
-  scrollbar-color: rgb(237, 225, 190) rgb(237, 225, 190);
+  scrollbar-color: rgb(237, 225, 190);
+  padding-top: 50%;
 }
 .winModal{
   display: flex;
@@ -177,15 +193,16 @@ body{
   top: 14%;
   left: 6%;
   z-index: 2;
-  box-shadow: 10px 5px 5px grey;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612);
 }
 .tacoModal{
-  font-size: 1em;
+  display: table-cell;
+  font-size: 20px;
   border: 3px solid black;
   height: 85%;
   width: 25%;
   overflow: auto;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   position: fixed;
   text-align: center;
@@ -193,17 +210,45 @@ body{
   justify-content: space-between;
   background-color: rgb(237, 225, 190);
   top: 5%;
-  right: 3%;
+  right: 2%;
   z-index: 2;
-  box-shadow: 10px 5px 5px grey;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612);
 }
 
 .hidden{
   display:none;
 }
+.textModalStats{
+  display: flex;
+  height:55%;
+  width:15%;
+  font-size: 4vmin;
+  flex-direction: column;
+  position: fixed;
+  border: 2px white solid;
+  justify-content: center;
+  text-align: center;
+  opacity: 0.9;
+  background-color: rgb(237, 225, 190);
+  z-index: 1;
+  top: 21vh;
+  left: 83vw;
+  border: 3px solid black;
+  box-shadow: 10px 5px 5px grey;
+  overflow: hidden;
+}
 
+.statsInside{
+  font-size: 5px;
+  padding-right: 5px;
+}
 
-
+.textModalStats > *{
+  border-top: black 1px solid;
+}
+.weatherStats{
+  border: none;
+}
 
 /* playing with snow and rain effects */
 
@@ -225,9 +270,10 @@ body{
   border: 3px solid goldenrod;
   opacity: 90%;
 
-
+}
 .weather {
-    position: relative; overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 /* pseudo elements: positioning and setup */
 .weather:before, .weather:after {
