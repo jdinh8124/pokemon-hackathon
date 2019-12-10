@@ -37,6 +37,4 @@ class Weather{
     console.log(response.responseText);
   }
 
-
-  //hello
 }
