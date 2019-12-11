@@ -4,7 +4,7 @@ function initializeApp() {
   var game = new GameBoard();
   game.gameSetup();
 
-  $('.startModal').removeClass('hidden');
+  // $('.startModal').removeClass('hidden'); //hide show beggining MAP modal
   $('.mapList').on('click', dropDownList);
   $('.active').on('click', ".locationChoice", clickOnMapLocation);
 
@@ -14,8 +14,6 @@ function initializeApp() {
 
 
   var weather = new Weather(34.052235, -118.2445)
-
-  // var weather = new Weather(-26.2051, 28.0497)
 
 }
 
