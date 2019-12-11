@@ -8,6 +8,8 @@ class GameBoard{
 
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
+    this.player1Wins = 0;
+    this.player2Wins = 0;
     // this.handleKeyPress = this.handleKeyPress.bind(this);
     // $('html').on("keydown", this.handleKeyPress);
   }
@@ -132,6 +134,7 @@ class GameBoard{
       this.pokemonBattle(pokemon1, pokemon2, turn);
     } else {
       this.endFight(pokemon1, pokemon2);
+        var carRainOnWin = new EmojiCatRain();
     }
 
   }
@@ -144,11 +147,15 @@ class GameBoard{
       $(".winModal").toggleClass("hidden");
       $(".tacoModal").toggleClass("hidden");
       $(".textModalContent").text(pokemon1.name + " wins! Nice work, Player 1");
+      this.player1Wins++;
+      $(".player1Stats").text(this.player1Wins);
     } else {
       console.log(pokemon2.name +"! Player 2 wins");
       $(".winModal").toggleClass("hidden");
       $(".tacoModal").toggleClass("hidden");
       $(".textModalContent").text(pokemon2.name + " wins! Good job, Player 2");
+      this.player2Wins++;
+      $(".player2Stats").text(this.player2Wins);
     }
 
 
