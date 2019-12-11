@@ -262,6 +262,21 @@ body{
 .weatherStats{
   border: none;
 }
+.type{
+  position: fixed ;
+  top: 0vw;
+  height: 19vw;
+  width: 19vw;
+  z-index: 2;
+  background-repeat: no-repeat;
+}
+.element1, .element3, .element5 {
+top: 12%;
+}
+
+.element2, .element4, .element6 {
+top: 92.5%;
+}
 
 /* playing with snow and rain effects */
 

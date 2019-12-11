@@ -13,10 +13,6 @@ function initializeApp() {
   var taco = new Taco
   taco.getTacoFromServer();
 
-
-
-  var weather = new Weather(34.052235, -118.2445)
-
 }
 
 function startTacoVideo() {

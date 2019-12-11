@@ -77,11 +77,28 @@ class Pokemon{
   render(){
     var current = this;
     var thisPokemon = this.getStats();
-    $("#icon" + this.playerNum)
+    var typeToUpper = this.elementType.charAt(0).toUpperCase() + this.elementType.slice(1);
+    if(this.playerNum % 2 === 0){
+      $(".element" + this.playerNum).css("background-image", `url(../assets/elementtypes/${typeToUpper}.png`);
+      $("#icon"+this.playerNum)
+      .css("background-image", 'url(' + this.backSprite + ')')
+      .on("click", function(){
+        current.addToArena(thisPokemon);
+      });
+
+
+
+
+    } else {
+      $(".element" + this.playerNum).css("background-image", `url(../assets/elementtypes/${typeToUpper}.png`);
+      $("#icon" + this.playerNum)
       .css("background-image", 'url(' + this.frontSprite + ')')
       .on("click", function () {
         current.addToArena(thisPokemon);
       });
+
+
+    }
 
 //uncomment below to have bottom row back facing sprites instead of all front facing
 
@@ -100,6 +117,7 @@ class Pokemon{
     //     current.addToArena(thisPokemon);
     //   });
     // }
+
   }
 
   toGameBoard(){
