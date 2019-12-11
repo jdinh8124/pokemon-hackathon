@@ -6,11 +6,12 @@ class GameBoard{
     this.pokemonToFight = [];
     this.playerNumber = 1;
 
+    this.nextRound = this.nextRound.bind(this);
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
     // this.handleKeyPress = this.handleKeyPress.bind(this);
     // $('html').on("keydown", this.handleKeyPress);
-
+    $(".restartButton").on("click", this.nextRound);
   }
 
   gameSetup(){
@@ -143,17 +144,27 @@ class GameBoard{
     this.pokemonPool = [];
     if(pokemon1.hp >= pokemon2.hp){
       console.log(pokemon1.name+"! Player 1 wins");
-      $(".winModal").toggleClass("hidden");
-      $(".tacoModal").toggleClass("hidden");
       $(".textModalContent").text(pokemon1.name + " wins! Nice work, Player 1");
     } else {
       console.log(pokemon2.name +"! Player 2 wins");
-      $(".winModal").toggleClass("hidden");
-      $(".tacoModal").toggleClass("hidden");
       $(".textModalContent").text(pokemon2.name + " wins! Good job, Player 2");
     }
+    $(".winModal").toggleClass("hidden");
+    $(".tacoModal").toggleClass("hidden");
+    $(".restartButton").toggleClass("hidden");
+  }
 
-
+  nextRound(){
+    this.playerNumber = 1;
+    console.log("asdf");
+    $(".winModal").toggleClass("hidden");
+    $(".tacoModal").toggleClass("hidden");
+    $(".restartButton").toggleClass("hidden");
+    $(".pokeIcon").removeClass("unselectable");
+    $(".pokeIcon").removeClass("selected");
+    $(".p1Fighter1").toggleClass("hidden");
+    $(".p2Fighter1").toggleClass("hidden");
+    this.gameSetup();
   }
 
 
