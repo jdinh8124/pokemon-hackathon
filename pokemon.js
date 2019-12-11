@@ -76,9 +76,9 @@ class Pokemon{
   render(){
     var current = this;
     var thisPokemon = this.getStats();
-
+    var typeToUpper = this.elementType.charAt(0).toUpperCase() + this.elementType.slice(1);
     if(this.playerNum % 2 === 0){
-
+      $(".element" + this.playerNum).css("background-image", `url(../assets/elementtypes/${typeToUpper}.png`);
       $("#icon"+this.playerNum)
       .css("background-image", 'url(' + this.backSprite + ')')
       .on("click", function(){
@@ -86,15 +86,16 @@ class Pokemon{
       });
 
 
-      $(".element" + this.playerNum).css("background-image", 'url(' + this.elementType + ".png" + ')')
+
 
     } else {
+      $(".element" + this.playerNum).css("background-image", `url(../assets/elementtypes/${typeToUpper}.png`);
       $("#icon" + this.playerNum)
       .css("background-image", 'url(' + this.frontSprite + ')')
       .on("click", function () {
         current.addToArena(thisPokemon);
       });
-      $(".element" + this.playerNum).css("background-image", 'url(' + this.elementType + ".png" + ')')
+
     }
   }
 
