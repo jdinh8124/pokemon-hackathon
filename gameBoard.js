@@ -5,11 +5,17 @@ class GameBoard{
     this.pokemonPool = [];
     this.pokemonToFight = [];
     this.playerNumber = 1;
-
+    this.backgroundMusic = new Audio("assets/pokemonbattle.mp3");
+    this.attackSound = new Audio("assets/Slam.wav");
+    this.dyingSound = new Audio("assets/SilvallyFaintingCry.mp3")
+    this.nextRound = this.nextRound.bind(this);
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
+    this.player1Wins = 0;
+    this.player2Wins = 0;
     // this.handleKeyPress = this.handleKeyPress.bind(this);
     // $('html').on("keydown", this.handleKeyPress);
+    $(".restartButton").on("click", this.nextRound);
   }
 
   gameSetup(){
@@ -41,8 +47,8 @@ class GameBoard{
   }
 
   prepBattle(){
-    var backgroundMusic = new Audio("assets/pokemonbattle.mp3");
-    backgroundMusic.play()
+
+    this.backgroundMusic.play();
     console.log("waiting on music")
 
     var turn = 0;
@@ -60,6 +66,7 @@ class GameBoard{
   }
 
   addPokemonToArena(pokemon){
+
     this.pokemonToFight.push(pokemon);
 
     console.log(pokemon.playerNum);
@@ -99,20 +106,36 @@ class GameBoard{
 
     var battleText = $("<div>");
     console.log(turn);
+
     if(turn === 1){
-      // console.log("p1dmg" + pokemon1Damge);
-      console.log(pokemon1.name + " attacked!");
-      $(".textModalContent").text(pokemon1.name + " attacked!");
+
+      $("#p1Fighter1").toggle();
+      $("#p1Fighter1").toggle();
+
+      this.attackSound.play();
+
+      $(".textModalContent").text(pokemon1.name + " attacked " + pokemon2.name + " for " + pokemon1Damage + " damage.");
       pokemon2.hp -= pokemon1Damage;
       console.log(pokemon2.name + " hp: " + pokemon2.hp);
-      $(".textModalContent").append(battleText.text(pokemon2.name + " hp: " + pokemon2.hp));
+
+
+      $(".bottomHPBar").css("width", pokemon2.hp + "%");
+      $(".bottomHPBar").text(pokemon2.hp);
+
     } else if (turn === 2){
-      // console.log("p2dmg" + pokemon2Damge);
-      console.log(pokemon2.name + " attacked!");
-      $(".textModalContent").text(pokemon2.name + " attacked!");
+
+      $("#p2Fighter1").toggle();
+      $("#p2Fighter1").toggle();
+      
+      this.attackSound.play();
+
+      $(".textModalContent").text(pokemon2.name + " attacked " + pokemon1.name + " for " + pokemon2Damage + " damage.");
       pokemon1.hp -= pokemon2Damage;
       console.log(pokemon1.name + " hp: " + pokemon1.hp);
-      $(".textModalContent").append(battleText.text(pokemon1.name + " hp: " + pokemon1.hp));
+
+      $(".topHPBar").css("width", pokemon1.hp + "%");
+      $(".topHPBar").text(pokemon1.hp);
+
     }
 
     var current = this;
@@ -125,33 +148,51 @@ class GameBoard{
     if (pokemon1.hp > 0 && pokemon2.hp > 0) {
       console.log("round2");
       if(turn === 1){
+
         turn++;
       } else {
         turn--;
       }
       this.pokemonBattle(pokemon1, pokemon2, turn);
     } else {
+      this.dyingSound.play();
       this.endFight(pokemon1, pokemon2);
+
     }
 
   }
 
   endFight(pokemon1, pokemon2){
+    this.backgroundMusic.pause();
     this.pokemonToFight = [];
     this.pokemonPool = [];
     if(pokemon1.hp >= pokemon2.hp){
       console.log(pokemon1.name+"! Player 1 wins");
-      $(".winModal").toggleClass("hidden");
-      $(".tacoModal").toggleClass("hidden");
       $(".textModalContent").text(pokemon1.name + " wins! Nice work, Player 1");
+      this.player1Wins++;
+      $(".player1Stats").text(this.player1Wins);
     } else {
       console.log(pokemon2.name +"! Player 2 wins");
-      $(".winModal").toggleClass("hidden");
-      $(".tacoModal").toggleClass("hidden");
       $(".textModalContent").text(pokemon2.name + " wins! Good job, Player 2");
+      this.player2Wins++;
+      $(".player2Stats").text(this.player2Wins);
     }
+    $(".winModal").toggleClass("hidden");
+    $(".tacoModal").toggleClass("hidden");
+    $(".restartButton").toggleClass("hidden");
+  }
 
-
+  nextRound(){
+    this.playerNumber = 1;
+    console.log("asdf");
+    $(".winModal").toggleClass("hidden");
+    $(".tacoModal").toggleClass("hidden");
+    $(".restartButton").toggleClass("hidden");
+    $(".pokeIcon").removeClass("unselectable");
+    $(".pokeIcon").removeClass("selected");
+    $(".p1Fighter1").toggleClass("hidden");
+    $(".p2Fighter1").toggleClass("hidden");
+    this.gameSetup();
   }
 
 
