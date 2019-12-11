@@ -76,10 +76,11 @@ class Weather{
     else if (this.lat === 37.7793 && this.lon === -122.4193) {
       $(".gameContainer").css("background-image", 'url(' + "assets/GoldenGateBridge-001.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
     } // Paris - eiffel Tower
-    else if (this.lat === 48.8566 && this.lon === 2.3515){
-      //Johannesburg
-      $(".gameContainer").css("background-image", 'url(' + "assets/paris.jpg " + ')').css("background-size", "cover").css("background-repeat", "no-repeat");
-    } //Brazil Igazu Falls
+    else if (this.lat === 64.2408 && this.lon === 56.6271){
+
+      $(".gameContainer").css("background-image", 'url(' + "assets/antarctica.jpg " + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "bottom");
+    }     //Johannesburg
+     //Brazil Igazu Falls
      else if (this.lat === -26.2051 && this.lon === 28.0497) {
      //South Korea
       $(".gameContainer").css("background-image", 'url(' + "assets/johan.jpg " + ')').css("background-size", "cover").css("background-repeat", "no-repeat");
@@ -91,7 +92,7 @@ class Weather{
     } else if (this.lat === 51.5073 && this.lon === -0.1277) {
       $(".gameContainer").css("background-image", 'url(' + "assets/London.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
     } else if (this.lat === 37.7006 && this.lon === -83.9739) {
-      $(".gameContainer").css("background-image", 'url(' + "assets/irvine.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
+      $(".gameContainer").css("background-image", 'url(' + "assets/lfz-background.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
     }
   }
 }
