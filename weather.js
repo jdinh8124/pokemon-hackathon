@@ -63,7 +63,7 @@ class Weather{
     }
   }
   cityBackground(){
-    //LA STAPLE CENTER
+    //LA STAPLES CENTER
     if (this.lat === 34.044227 && this.lon === -118.267254) {
       $(".gameContainer").css("background-image", 'url(' + "assets/STAPLESCenternight.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
     }  //NYC Rockerfeller
@@ -75,23 +75,24 @@ class Weather{
     } //SF Bridge
     else if (this.lat === 37.820090 && this.lon === -122.477654) {
       $(".gameContainer").css("background-image", 'url(' + "assets/GoldenGateBridge-001.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
-    } // Paris - eiffel Tower
-    else if (this.lat === 64.2408 && this.lon === 56.6271){
+    } // Antartica - Marambio Base
+    else if (this.lat === -76.282679 && this.lon === 22.190994){
       $(".gameContainer").css("background-image", 'url(' + "assets/antarctica.jpg " + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "bottom");
-    }     
-     //Brazil Igazu Falls
-     else if (this.lat === -25.689746 && this.lon === -54.440882) {
-     //South Korea
+    } // Johannesburg
+    else if (this.lat === -26.2051 && this.lon === 28.0497) {
       $(".gameContainer").css("background-image", 'url(' + "assets/johan.jpg " + ')').css("background-size", "cover").css("background-repeat", "no-repeat");
-    } //London
-    else if (this.lat === -28.6681 && this.lon === -49.3384) {
+    } //Iguazu Falls
+    else if (this.lat === -25.689901 && this.lon === -54.441011) {
       $(".gameContainer").css("background-image", 'url(' + "assets/iguazu.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
-    } else if (this.lat === 37.5667 && this.lon === 126.9783) {
+    } //Seoul
+    else if (this.lat === 37.5667 && this.lon === 126.9783) {
       $(".gameContainer").css("background-image", 'url(' + "assets/seoul.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat");
-    } else if (this.lat === 51.5073 && this.lon === -0.1277) {
+    } //London
+    else if (this.lat === 51.5073 && this.lon === -0.1277) {
       $(".gameContainer").css("background-image", 'url(' + "assets/London.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
-    } else if (this.lat === 33.635196 && this.lon === -117.740545) {
-      $(".gameContainer").css("background-image", 'url(' + "assets/irvine.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
+    } //LearningFuze
+    else if (this.lat === 33.635196 && this.lon === -117.740545) {
+      $(".gameContainer").css("background-image", 'url(' + "assets/lfz-background.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
     }
   }
 }

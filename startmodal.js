@@ -1,11 +1,19 @@
 class BegModal {
     constructor () {
+
       this.dropDownList = this.dropDownList.bind(this);
       this.clickOnMapLocation = this.clickOnMapLocation.bind(this);
       this.selectMap = this.selectMap.bind(this);
-      // this.wasPlayButtonClicked = this.wasPlayButtonClicked.bind(this);
+
       this.playButtonHover = this.playButtonHover.bind(this);
       this.stopButtonHover = this.stopButtonHover.bind(this);
+
+      this.fiveSecCountdown = this.fiveSecCountdown.bind(this);
+
+      this.timeLeft = 5;
+      this.timer = null;
+
+
 
       this.playButtonHover();
 
@@ -39,8 +47,18 @@ class BegModal {
       this.selectMap(city);
 
       $('.listOfMapLocations').addClass('hidden');
+
           this.stopButtonHover();
       setTimeout(() => {
+
+
+      //add here
+      $('.playButton').css('opacity','100%')
+      this.fiveSecCountdown();
+      this.timer = setInterval(this.fiveSecCountdown, 1000);
+
+
+      setTimeout(function () {
         $('.startModal').addClass('hidden');
 
 
@@ -48,21 +66,33 @@ class BegModal {
     }
 
     playButtonHover() {
-      //remove playButton
 
         this.intervalId = setInterval( function() {
+
+      setInterval(function () {
+
         $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
         console.log('stillgoing')
         setTimeout(function () {
           $('.playButton').addClass('playButton:hover').css("transform", "scale(1.0");
-        }, 300)
-      }, 1500);
+        }, 400)
+      }, 1100);
 
     }
 
     stopButtonHover(){
       console.log('stopButtonHover Fired')
       clearInterval(this.intervalId);
+        }
+        
+    //create function for countdown
+    fiveSecCountdown(){
+      if (this.timeLeft == -1){
+        clearTimeout(this.timer)
+      } else {
+        $('.playButton').text(this.timeLeft);
+        this.timeLeft--;
+      }
     }
 
     selectMap(city) {
@@ -88,9 +118,9 @@ class BegModal {
           var weather = new Weather(37.820090, -122.477654)
           break;
         case 'antarctica':
-          var location5 = new Maps(64.2408, 56.6271, 'antarctica', 15);
+          var location5 = new Maps(-76.282679, 22.190994, 'antarctica', 2);
           location5.render();
-          var weather = new Weather(64.2408, 56.6271)
+          var weather = new Weather(-76.282679, 22.190994)
           break;
         case 'southAfrica':
           var location6 = new Maps(-26.2051, 28.0497, 'johannesburg', 15);
@@ -98,9 +128,9 @@ class BegModal {
           var weather = new Weather(-26.2051, 28.0497)
           break;
         case 'southAmerica':
-          var location7 = new Maps(-25.689746, -54.440882, 'iguazuFalls', 13);
+          var location7 = new Maps(-25.689901, -54.441011, 'iguazuFalls', 13);
           location7.render();
-          var weather = new Weather(-25.689746, -54.440882)
+          var weather = new Weather(-25.689901, -54.441011)
           break;
         case 'southKorea':
           var location8 = new Maps(37.5667, 126.9783, 'seoul', 15);
