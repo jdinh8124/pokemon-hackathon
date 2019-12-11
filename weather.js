@@ -48,7 +48,7 @@ class Weather{
     if (this.weather === "Clouds") {
       var weatherImg = $("<img>").attr("src", "assets/cloudy.PNG").attr("alt", "broken")
       $(".weatherStats").append(weatherImg)
-    } else if (this.weather === "Rain") {
+    } else if (this.weather === "Rain" || this.weather === "Mist") {
       $(".gameContainer").addClass("weather rain");
       var weatherImgRain = $("<img>").attr("src", "assets/rain.PNG").attr("alt", "broken");
       $(".weatherStats").append(weatherImgRain)
