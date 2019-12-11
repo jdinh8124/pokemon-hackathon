@@ -4,13 +4,19 @@ class BegModal {
       this.clickOnMapLocation = this.clickOnMapLocation.bind(this);
       this.selectMap = this.selectMap.bind(this);
       // this.wasPlayButtonClicked = this.wasPlayButtonClicked.bind(this);
+      this.playButtonHover = this.playButtonHover.bind(this);
+      this.stopButtonHover = this.stopButtonHover.bind(this);
 
       this.playButtonHover();
+
       $('.startModal').removeClass('hidden');
       $('.pokedex').addClass('hidden');
       $('.mapList').on('click', this.dropDownList);
       $('.battleField').on('click', ".locationChoice", this.clickOnMapLocation);
       $('.playButton').on('click', this.displayMapList);
+
+      this.intervalId;
+
     }
 
 /*** front modal stuff ***/
@@ -33,22 +39,31 @@ class BegModal {
       this.selectMap(city);
 
       $('.listOfMapLocations').addClass('hidden');
-
-      setTimeout(function () {
+          this.stopButtonHover();
+      setTimeout(() => {
         $('.startModal').addClass('hidden');
+
+
       }, 5000);
     }
 
     playButtonHover() {
       //remove playButton
-      setInterval(function () {
+
+        this.intervalId = setInterval( function() {
         $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
+        console.log('stillgoing')
         setTimeout(function () {
           $('.playButton').addClass('playButton:hover').css("transform", "scale(1.0");
         }, 300)
       }, 1500);
+
     }
 
+    stopButtonHover(){
+      console.log('stopButtonHover Fired')
+      clearInterval(this.intervalId);
+    }
 
     selectMap(city) {
       switch (city) {
