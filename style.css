@@ -76,6 +76,13 @@ body{
 
 }
 
+.hpBar{
+  margin: 1% 0 0 1%;
+  width: 80%;
+  height: 5%;
+  background-color: green;
+}
+
 .shadowed {
 	filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12,OffY=12,Color='#444')";
 	filter: url(#drop-shadow);
