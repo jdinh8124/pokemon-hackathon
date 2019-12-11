@@ -2,9 +2,13 @@ html{
   height:100%;
   width: 100%;
   display: flex;
+  overflow: hidden;
   /* box-sizing: border-box; */
 }
-
+@font-face{
+  font-family: "Poketext";
+  src: url("/assets/Poketext.ttf");
+}
 body{
   display: flex;
   flex-direction: column;
@@ -42,7 +46,7 @@ body{
   align-items: center;
   background-color: rgb(112, 77, 121);
 }
-
+/*
 #icon1{
   border-radius: 5% 0 0 5%;
 }
@@ -53,25 +57,35 @@ body{
   border-radius: 5% 0 0 5%;
 }
 #icon6{
-  border-radius: 0 5% 5% 0;
-}
+  border-radius: 0 5% 5% 0; */
+/* } */
 .pokeIconBox{
+  border-radius: 5%;
   display: flex;
   height: 100%;
   width: 33.3333333%;
   background-color: rgb(230, 219, 234);
   border: 3px solid black;
+
 }
 .pokeIcon{
   display: flex;
   height: 95%;
   width: 100%;
-
+  cursor: pointer;
 
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 46%, contain;
 
+}
+
+.hpBar{
+  margin: 1% 0 0 19%;
+  width: 80%;
+  height: 10%;
+  background-color: green;
+  transition: 0.5s;
 }
 
 .shadowed {
@@ -93,12 +107,16 @@ body{
 .topTrainerIconBox{
   align-items: center;
   display: flex;
-  height: 95%;
+  height: 100%;
   width: 95%;
   border: 3px solid black;
   border-radius: 5%;
   background-color: rgb(230, 219, 234);
   margin: 0 0 0 2%;
+  background-image: url("./assets/uzairProfile.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .gameContainer{
@@ -135,12 +153,16 @@ body{
 .bottomTrainerIconBox{
   align-items: center;
   display: flex;
-  height: 95%;
+  height: 100%;
   width: 95%;
   border: 3px solid black;
   background-color: rgb(230, 219, 234);
   border-radius: 5%;
   margin: 0 2% 0 0 ;
+  background-image: url("./assets/codyProfile.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .textModal{
@@ -152,18 +174,20 @@ body{
   text-align: center;
   align-items: center;
   justify-content: center;
-  opacity: 0.9;
+
   background-color: rgb(237, 225, 190);
   z-index: 1;
   top: 24vh;
   left: 2vw;
-  border-radius: 12%/50% 7px;
+      /* border-radius: 5%; */
   border: 3px solid black;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612);
   overflow: hidden;
   scrollbar-track-color: antiquewhite;
 }
 .textModalContent{
+  font-family: "Poketext";
+  display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -171,9 +195,7 @@ body{
   height: 99%;
   width: 100%;
   overflow-y: auto;
-  padding-right: 5px;
   scrollbar-color: rgb(237, 225, 190);
-  padding-top: 50%;
 }
 .winModal{
   display: flex;
@@ -182,18 +204,20 @@ body{
   align-items: center;
   justify-content: center;
   background-color: rgb(237, 225, 190);
-  top: 14%;
+  top: 5%;
   left: 6%;
-  z-index: 2;
-  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612);
+  z-index: 6;
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612); */
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
 }
 .tacoModal{
-  font-size: 1em;
+  display: table-cell;
+  font-size: 20px;
   border: 3px solid black;
   height: 85%;
   width: 25%;
-  overflow-y: auto;
-  display: flex;
+  overflow: auto;
+  /* display: flex; */
   flex-direction: column;
   position: fixed;
   text-align: center;
@@ -201,17 +225,62 @@ body{
   justify-content: space-between;
   background-color: rgb(237, 225, 190);
   top: 5%;
-  right: 3%;
-  z-index: 2;
-  box-shadow: 10px 5px 5px black;
+  right: 2%;
+  z-index: 6;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+  opacity: 0.9;
+
 }
 
-.hidden{
-  display:none;
+
+.textModalStats{
+  display: flex;
+  height:55%;
+  width:15%;
+  font-size: 4vmin;
+  flex-direction: column;
+  position: fixed;
+  border: 2px white solid;
+  justify-content: center;
+  text-align: center;
+  opacity: 0.9;
+  background-color: rgb(237, 225, 190);
+  z-index: 0;
+  top: 21vh;
+  left: 83vw;
+  border: 3px solid black;
+  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612);
+  overflow: hidden;
+    /* border-radius: 5%; */
 }
 
+.statsInside{
+  font-size: 5px;
+  padding-right: 5px;
+}
 
+.textModalStats > *{
+  border-top: black 1px solid;
+}
+.weatherStats{
+  border: none;
+}
+.type{
+  position: fixed ;
+  top: 0vw;
+  height: 11%;
+  width: 4%;
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.element1, .element3, .element5 {
+top: 9.5%;
+}
 
+.element2, .element4, .element6 {
+top: 89.5%;
+}
 
 /* playing with snow and rain effects */
 
@@ -219,11 +288,10 @@ body{
   margin: auto;
   height: 45%;
   width: 30%;
-  border: 3px solid black;
-  background-color: rgb(230, 219, 234);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 55%, contain;
+  animation: attackUp 3s infinite;
 }
 
 .unselectable{
@@ -232,8 +300,8 @@ body{
 .selected{
   border: 3px solid goldenrod;
   opacity: 90%;
-
-
+  border-radius: 3%;
+}
 .weather {
     position: relative;
     overflow: hidden;
@@ -242,7 +310,7 @@ body{
 .weather:before, .weather:after {
     content: "";
     position: absolute; left: -50%; top: -50%; right: -50%; bottom: -50%;
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
 
     background: transparent repeat;
@@ -310,4 +378,212 @@ body{
     from { background-position: 64px 64px; }
     to { background-position: 64px 1088px; }
 
+}
+
+.closeModalButton{
+	background-color: grey;
+	margin: 1% auto;
+	cursor: pointer;
+	color: white;
+	font-size: 14px;
+	border-radius: 2%;
+	width: 50%;
+}
+
+/*** BEGINNING MODAL ***/
+
+.startModal{
+  height: 100%;
+  width: 100%;
+
+  background-color: white;
+  /* border: 1px solid black; */
+
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  z-index: 5;
+  background-image: url("./assets/frontmodalwallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.title_PlayButtonContainer{
+  position: absolute;
+  top: 8%;
+  left: 3%;
+  height: 42%;
+  width: 33%;
+  /* background-color: blue; */
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+}
+.pokemonTitle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  height: 50%;
+  width: 100%;
+  background-image: url("./assets/pokemonlogo.png");
+  background-size: 101% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.playButton{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Press Start 2P', cursive;
+  height: 40%;
+  width: 100%;
+  font-size: 45px;
+  transition: all .2s ease-in-out;
+  margin: 0 0 0 2%;
+}
+.playButton:hover {
+   transform: scale(1.1);
+}
+
+.listOfMapLocations{
+  position: absolute;
+  top: 7%;
+  left: 100%;
+}
+
+.mapList{
+  position: relative;
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
+  background: #660000;
+  border:none;
+
+  box-shadow: none;
+  outline: none;
+  cursor: pointer;
+  color: #fff;
+}
+
+ul{
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  background: #ccc;
+  transform-origin: top;
+  transition: 0.3s;
+}
+ul.battleField{
+  transform: perspective(1000px) rotateX(-90deg);
+}
+
+ul li{
+  list-style: none;
+}
+ul li a {
+  display: block;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  background: #262626;
+  color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.2);
+  transition: 0.5s;
+}
+ul li a:hover{
+  background: #0d7ad0;
+}
+.pokedex{
+  position: absolute;
+  top: 10%;
+  right: 38%;
+  height: 80%;
+  width: 27%;
+  /* background-color: blue; */
+  background-image: url("./assets/pokedex.png");
+  background-size: 90% 120%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.displayMap{
+  height: 68.8%;
+  width: 71%;
+  position: absolute;
+  top: 12.4%;
+  right: 15.3%;
+  border-radius: 4%;
+}
+
+#staplesCenter,
+#rockefellerCenter,
+#tokyoCentral,
+#goldenGateBridge,
+#antarctica,
+#johannesburg,
+#iguazuFalls,
+#seoul,
+#bigBen,
+#learningFuze{
+  height: 100%;
+  width: 100%;
+  border-radius: 3.5%;
+}
+
+.restartButton{
+  font-size: 30px;
+  display: flex;
+  position: fixed;
+  bottom: 6%;
+  left: 29%;
+  background-color: rgb(194, 27, 27);
+  color: white;
+  border-radius: 5%;
+  border: 2px solid black;
+  height: 9%;
+  width: 14%;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
+}
+
+.animationDown{
+  animation: attackDown 300ms;
+  position:relative !important;
+}
+@keyframes attackDown {
+  0%{
+    bottom: 0;
+  }
+  50%{
+    bottom:-17vh;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+
+
+.animationUp{
+  animation: attackUp 300ms;
+  position:relative !important;
+}
+@keyframes attackUp {
+  0%{
+    bottom: 0;
+  }
+  50%{
+    bottom:17vh;
+  }
+  100% {
+    bottom: 0
+  }
+}
+
+.hidden{
+  display:none !important;
 }

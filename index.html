@@ -4,7 +4,12 @@
 
   <title>PokeChess</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="./assets/uzairFavi.png">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <script src="startmodal.js"></script>
+
   <script src="weather.js"></script>
   <script src="pokemon.js"></script>
   <script src="taco.js"></script>
@@ -17,12 +22,15 @@
       <div class="pokeIconContainer">
         <div class="pokeIconBox">
           <div id="icon1" class="pokeIcon shadowed"></div>
+            <div class="element1 type"></div>
         </div>
         <div class="pokeIconBox">
           <div id="icon3" class="pokeIcon shadowed"></div>
+            <div class="element3 type"></div>
         </div>
         <div class="pokeIconBox">
           <div id="icon5" class="pokeIcon shadowed"></div>
+            <div class="element5 type"></div>
         </div>
       </div>
       <div  class="trainerIconContainer">
@@ -33,9 +41,14 @@
 
   <div class="gameContainer">
 
+    <div class="hidden shadowed pokemonInArena p1Fighter1 animationDown" id="p1Fighter1">
+      <div class="topHPBar hpBar"></div>
+    </div>
+    <div class="hidden shadowed pokemonInArena p2Fighter1 animationUp" id="p2Fighter1">
+      <div class="bottomHPBar hpBar"></div>
+    </div>
 
   </div>
-
   <div class="bottomBenchbackground">
     <div class="bottomBench">
       <div class="trainerIconContainer">
@@ -44,46 +57,85 @@
       <div class="pokeIconContainer">
         <div class="pokeIconBox">
           <div id="icon2" class="pokeIcon shadowed"></div>
+          <div class="element2 type"></div>
         </div>
         <div class="pokeIconBox">
           <div id="icon4" class="pokeIcon shadowed"></div>
+            <div class="element4 type"></div>
         </div>
         <div class="pokeIconBox">
           <div id="icon6" class="pokeIcon shadowed"></div>
+            <div class="element6 type"></div>
         </div>
       </div>
-
     </div>
   </div>
  <footer>
+  <div type="button"  class="hidden restartButton">
+      Play Again
+  </div>
     <div class="textModal">
-
-
-<!-- <div class="weather snow"></div>
-<div class="weather rain"></div> -->
-
-
       <div class="textModalContent">
-
-      Cubone kicked Caterpie!!!
-
+      Choose your Pokemon!
     </div>
-
-
     <div class="hidden winModal">
-      <!-- <iframe width="875" height="492" src="https://www.youtube.com/embed/npjF032TDDQ" frameborder="0"
-  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      <iframe width="875" height="492" src="https://www.youtube.com/embed/npjF032TDDQ" frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="hidden tacoModal">
-      <div class="tacoRecipe"></div>
-      <div class="tacoBaseRecipe"></div>
+      <div class="tacoRecipe">
+
+      </div>
     </div>
-
-
-  <div class="weather rain"></div>
-
-
+</div>
+<div class="textModalStats">
+  <div class="weatherStats">
+    Current Weather:
+  </div>
+  <div class="player1">
+    Player 1 Total Tacos:
+  </div>
+  <div class="player1Stats">
+    0
+  </div>
+  <div class="player1">
+    Player 2 Total Tacos:
+  </div>
+  <div class="player2Stats">
+    0
+  </div>
+</div>
   </footer>
+    <div class="startModal hidden">
+      <div class="title_PlayButtonContainer">
+        <div class="pokemonTitle"></div>
+
+        <div id="playButton" class="playButton">PLAY NOW </div>
+
+      </div>
+      <div class="pokedex">
+         <div class="displayMap"></div>
+              <div class="listOfMapLocations">
+                <button class="mapList"> Choose Your Map </button>
+
+                <ul class="battleField">
+
+                  <li id="LA" class="locationChoice"><a href="#">LA - Staples Center</a></li>
+                  <li id="NYC" class="locationChoice"><a href="#">NYC - Rockefeller Center</a></li>
+                  <li id="tokyo" class="locationChoice"><a href="#">Tokyo - Tokyo Central</a></li>
+                  <li id="SF" class="locationChoice"><a href="#">SF - Golden Gate Bridge</a></li>
+                  <li id="antarctica" class="locationChoice"><a href="#">Antarctica - Marambio Base</a></li>
+                  <li id="southAfrica" class="locationChoice"><a href="#">South Africa- Johannesburg</a></li>
+                  <li id="southAmerica" class="locationChoice"><a href="#">South America - Iguazu Falls</a></li>
+                  <li id="southKorea" class="locationChoice"><a href="#">South Korea - Seoul</a></li>
+                  <li id="london" class="locationChoice"><a href="#">London - Big Ben</a></li>
+                  <li id="irvine" class="locationChoice"><a href="#">Irvine - LearningFuze</a></li>
+                </ul>
+              </div>
+      </div>
+    </div>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB2oR-x7eBzWlSfYvV-NMofZPD0dw2_3p4"></script>
+      <script src="maps.js"></script>
 </body>
 
 </html>
