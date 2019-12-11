@@ -40,7 +40,8 @@ class BegModal {
     }
 
     playButtonHover() {
-      //remove playButton
+      //clearInterval(theFunction)
+      //theFunction  =
       setInterval(function () {
         $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
         setTimeout(function () {
@@ -73,9 +74,9 @@ class BegModal {
           var weather = new Weather(37.820090, -122.477654)
           break;
         case 'antarctica':
-          var location5 = new Maps(64.2408, 56.6271, 'antarctica', 15);
+          var location5 = new Maps(-76.282679, 22.190994, 'antarctica', 2);
           location5.render();
-          var weather = new Weather(64.2408, 56.6271)
+          var weather = new Weather(-76.282679, 22.190994)
           break;
         case 'southAfrica':
           var location6 = new Maps(-26.2051, 28.0497, 'johannesburg', 15);
@@ -83,9 +84,9 @@ class BegModal {
           var weather = new Weather(-26.2051, 28.0497)
           break;
         case 'southAmerica':
-          var location7 = new Maps(-25.689746, -54.440882, 'iguazuFalls', 13);
+          var location7 = new Maps(-25.689901, -54.441011, 'iguazuFalls', 13);
           location7.render();
-          var weather = new Weather(-25.689746, -54.440882)
+          var weather = new Weather(-25.689901, -54.441011)
           break;
         case 'southKorea':
           var location8 = new Maps(37.5667, 126.9783, 'seoul', 15);
