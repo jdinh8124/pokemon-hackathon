@@ -48,19 +48,14 @@ class BegModal {
 
       $('.listOfMapLocations').addClass('hidden');
 
-          this.stopButtonHover();
-      setTimeout(() => {
-
-
       //add here
       $('.playButton').css('opacity','100%')
       this.fiveSecCountdown();
       this.timer = setInterval(this.fiveSecCountdown, 1000);
 
-
+       this.stopButtonHover();
       setTimeout(function () {
         $('.startModal').addClass('hidden');
-
 
       }, 5000);
     }
@@ -68,15 +63,12 @@ class BegModal {
     playButtonHover() {
 
         this.intervalId = setInterval( function() {
-
-      setInterval(function () {
-
-        $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
-        console.log('stillgoing')
-        setTimeout(function () {
-          $('.playButton').addClass('playButton:hover').css("transform", "scale(1.0");
-        }, 400)
-      }, 1100);
+          $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
+          console.log('stillgoing')
+          setTimeout(function () {
+            $('.playButton').addClass('playButton:hover').css("transform", "scale(1.0");
+          }, 400)
+        }, 1100);
 
     }
 
@@ -84,7 +76,7 @@ class BegModal {
       console.log('stopButtonHover Fired')
       clearInterval(this.intervalId);
         }
-        
+
     //create function for countdown
     fiveSecCountdown(){
       if (this.timeLeft == -1){
