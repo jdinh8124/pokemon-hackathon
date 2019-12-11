@@ -4,15 +4,11 @@ class BegModal {
       this.dropDownList = this.dropDownList.bind(this);
       this.clickOnMapLocation = this.clickOnMapLocation.bind(this);
       this.selectMap = this.selectMap.bind(this);
-
       this.playButtonHover = this.playButtonHover.bind(this);
       this.stopButtonHover = this.stopButtonHover.bind(this);
-
       this.fiveSecCountdown = this.fiveSecCountdown.bind(this);
-
       this.timeLeft = 5;
       this.timer = null;
-
 
 
       this.playButtonHover();
@@ -53,7 +49,7 @@ class BegModal {
       this.fiveSecCountdown();
       this.timer = setInterval(this.fiveSecCountdown, 1000);
 
-       this.stopButtonHover();
+        this.stopButtonHover();
       setTimeout(function () {
         $('.startModal').addClass('hidden');
 
@@ -62,7 +58,7 @@ class BegModal {
 
     playButtonHover() {
 
-        this.intervalId = setInterval( function() {
+        this.intervalId = setInterval(function() {
           $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
           console.log('stillgoing')
           setTimeout(function () {
