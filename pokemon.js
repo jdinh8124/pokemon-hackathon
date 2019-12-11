@@ -42,6 +42,7 @@ class Pokemon{
   renderPokemon(response) {
     // console.log(response);
     this.name = response.name;
+    this.name = response.name.charAt(0).toUpperCase() + response.name.slice(1)
     this.attack = response.stats[4].base_stat;
     this.specialAttack = response.stats[2].base_stat;
     this.frontSprite = response.sprites.front_default;
@@ -96,7 +97,27 @@ class Pokemon{
         current.addToArena(thisPokemon);
       });
 
+
     }
+
+//uncomment below to have bottom row back facing sprites instead of all front facing
+
+    // if(this.playerNum % 2 === 0){
+
+    //   $("#icon"+this.playerNum)
+    //   .css("background-image", 'url(' + this.backSprite + ')')
+    //   .on("click", function(){
+    //     current.addToArena(thisPokemon);
+    //   });
+
+    // } else {
+    //   $("#icon" + this.playerNum)
+    //   .css("background-image", 'url(' + this.frontSprite + ')')
+    //   .on("click", function () {
+    //     current.addToArena(thisPokemon);
+    //   });
+    // }
+
   }
 
   toGameBoard(){
@@ -108,11 +129,13 @@ class Pokemon{
     if(this.playerNum % 2 === 0){
       $(".p2Fighter1")
       .toggleClass("hidden")
-      .css("background-image", 'url(' + this.frontSprite + ')');
+      .css("background-image", 'url(' + this.backSprite + ')');
+      $(".topHPBar").text(this.hp).css("width", "80%");
     } else {
       $(".p1Fighter1")
       .toggleClass("hidden")
       .css("background-image", 'url(' + this.frontSprite + ')');
+      $(".bottomHPBar").text(this.hp).css("width", "80%");
     }
   }
 

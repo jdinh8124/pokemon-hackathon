@@ -46,7 +46,7 @@ class GameBoard{
 
   prepBattle(){
 
-    this.backgroundMusic.play();
+    // this.backgroundMusic.play();
     console.log("waiting on music")
 
     var turn = 0;
@@ -104,19 +104,26 @@ class GameBoard{
 
     var battleText = $("<div>");
     console.log(turn);
-    $(".p1Fighter1").text(pokemon1.hp);
-    $(".p2Fighter1").text(pokemon2.hp);
+    // $(".p1Fighter1").text(pokemon1.hp);
+    // $(".p2Fighter1").text(pokemon2.hp);
+    // debugger
     if(turn === 1){
       $(".textModalContent").text(pokemon1.name + " attacked " + pokemon2.name + " for " + pokemon1Damage + " damage.");
       pokemon2.hp -= pokemon1Damage;
       console.log(pokemon2.name + " hp: " + pokemon2.hp);
-      $(".p2Fighter1").text(pokemon2.hp);
+      // $(".p2Fighter1").text(pokemon2.hp);
+
+      var topBarWidth = parseInt($(".topHPBar").css("width")) - pokemon1Damage;
+      $(".bottomHPBar").css("width", pokemon2.hp + "%");
+      $(".bottomHPBar").text(pokemon2.hp);
       // $(".textModalContent").append(battleText.text(pokemon2.name + " hp: " + pokemon2.hp));
     } else if (turn === 2){
       $(".textModalContent").text(pokemon2.name + " attacked " + pokemon1.name + " for " + pokemon2Damage + " damage.");
       pokemon1.hp -= pokemon2Damage;
       console.log(pokemon1.name + " hp: " + pokemon1.hp);
-      $(".p1Fighter1").text(pokemon1.hp);
+
+      $(".topHPBar").css("width", pokemon1.hp + "%");
+      $(".topHPBar").text(pokemon1.hp);
       // $(".textModalContent").append(battleText.text(pokemon1.name + " hp: " + pokemon1.hp));
     }
 
@@ -137,7 +144,7 @@ class GameBoard{
       this.pokemonBattle(pokemon1, pokemon2, turn);
     } else {
       this.endFight(pokemon1, pokemon2);
-        var carRainOnWin = new EmojiCatRain();
+
     }
 
   }
