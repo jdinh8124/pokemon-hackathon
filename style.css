@@ -2,6 +2,7 @@ html{
   height:100%;
   width: 100%;
   display: flex;
+  overflow: hidden;
   /* box-sizing: border-box; */
 }
 
@@ -365,14 +366,52 @@ body{
 /*** BEGINNING MODAL ***/
 
 .startModal{
-  height: 75%;
-  width: 75%;
+  height: 100%;
+  width: 100%;
   background-color: yellow;
   border: 1px solid black;
   position: absolute;
-  top: 13%;
-  left: 13%;
+  top: 0%;
+  left: 0%;
   z-index: 5;
+  background-image: url("../c1119_Hackathon2/assets/frontmodalwallpaper.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.title_PlayButtonContainer{
+  position: absolute;
+  top: 8%;
+  left: 3%;
+  height: 42%;
+  width: 33%;
+  /* background-color: blue; */
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+}
+.pokemonTitle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  vertical-align: middle;
+  height: 50%;
+  width: 100%;
+  background-image: url("../c1119_Hackathon2/assets/pokemonlogo.png");
+  background-size: 101% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.playButton{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Press Start 2P', cursive;
+  height: 40%;
+  width: 100%;
+  font-size: 45px;
 }
 
 .listOfMapLocations{
@@ -431,7 +470,7 @@ ul li a:hover{
   width: 50%;
   position: absolute;
   top: 20%;
-  left: 10%;
+  right: 10%;
   border: 1px solid black;
 }
 
