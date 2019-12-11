@@ -5,7 +5,7 @@ class GameBoard{
     this.pokemonPool = [];
     this.pokemonToFight = [];
     this.playerNumber = 1;
-
+    this.backgroundMusic = new Audio("assets/pokemonbattle.mp3");
     this.nextRound = this.nextRound.bind(this);
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
@@ -43,8 +43,8 @@ class GameBoard{
   }
 
   prepBattle(){
-    var backgroundMusic = new Audio("assets/pokemonbattle.mp3");
-    backgroundMusic.play()
+
+    this.backgroundMusic.play();
     console.log("waiting on music")
 
     var turn = 0;
@@ -140,6 +140,7 @@ class GameBoard{
   }
 
   endFight(pokemon1, pokemon2){
+    this.backgroundMusic.pause();
     this.pokemonToFight = [];
     this.pokemonPool = [];
     if(pokemon1.hp >= pokemon2.hp){
