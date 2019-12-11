@@ -108,6 +108,10 @@ class GameBoard{
     // $(".p2Fighter1").text(pokemon2.hp);
     // debugger
     if(turn === 1){
+
+      $("#poke1").removeClass("animationUp");
+      $("#poke2").addClass("animationUp");
+
       $(".textModalContent").text(pokemon1.name + " attacked " + pokemon2.name + " for " + pokemon1Damage + " damage.");
       pokemon2.hp -= pokemon1Damage;
       console.log(pokemon2.name + " hp: " + pokemon2.hp);
