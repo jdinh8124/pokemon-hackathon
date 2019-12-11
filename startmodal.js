@@ -74,10 +74,10 @@ class BegModal {
           location4.render();
           var weather = new Weather(37.7793, -122.4193)
           break;
-        case 'paris':
-          var location5 = new Maps(48.8566, 2.3515, 'eiffelTower', 15);
+        case 'antarctica':
+          var location5 = new Maps(64.2408, 56.6271, 'antarctica', 15);
           location5.render();
-          var weather = new Weather(48.8566, 2.3515)
+          var weather = new Weather(64.2408, 56.6271)
           break;
         case 'southAfrica':
           var location6 = new Maps(-26.2051, 28.0497, 'johannesburg', 15);
@@ -105,5 +105,5 @@ class BegModal {
           var weather = new Weather(37.7006, -83.9739)
           break;
       }
-    };
+    }
 }
