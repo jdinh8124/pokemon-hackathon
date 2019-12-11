@@ -126,7 +126,7 @@ class GameBoard{
 
       $("#p2Fighter1").toggle();
       $("#p2Fighter1").toggle();
-      
+
       this.attackSound.play();
 
       $(".textModalContent").text(pokemon2.name + " attacked " + pokemon1.name + " for " + pokemon2Damage + " damage.");
