@@ -81,12 +81,11 @@ body{
 }
 
 .hpBar{
-  margin: 1% 0 0 1%;
+  margin: 1% 0 0 19%;
   width: 80%;
   height: 10%;
   background-color: green;
-  transition: 10ms;
-
+  transition: 0.5s;
 }
 
 .shadowed {
