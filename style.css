@@ -263,6 +263,7 @@ body{
   background-repeat: no-repeat;
   background-position: center;
   background-size: 55%, contain;
+  animation: attackUp 3s infinite;
 }
 
 .unselectable{
@@ -465,8 +466,35 @@ ul li a:hover{
   box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
 }
 
+.animationDown{
+  animation: attackDown 300ms;
+  position:relative !important;
+}
+@keyframes attackDown {
+  0%{
+    bottom: 0;
+  }
+  50%{
+    bottom:-17vh;
+  }
+  100% {
+    bottom: 0;
+  }
+}
 
 
-@media only screen and (max-width: 1100px){
-  .pokeIcon{}
+.animationUp{
+  animation: attackUp 300ms;
+  position:relative !important;
+}
+@keyframes attackUp {
+  0%{
+    bottom: 0;
+  }
+  50%{
+    bottom:17vh;
+  }
+  100% {
+    bottom: 0
+  }
 }
