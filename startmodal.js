@@ -14,9 +14,6 @@ class BegModal {
     }
 
 /*** front modal stuff ***/
-    // wasPlayButtonClicked(){
-
-    // }
 
     displayMapList(){
       $('.playButton').css('opacity', '20%');
@@ -43,6 +40,7 @@ class BegModal {
     }
 
     playButtonHover() {
+      //remove playButton
       setInterval(function () {
         $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
         setTimeout(function () {
@@ -55,9 +53,9 @@ class BegModal {
     selectMap(city) {
       switch (city) {
         case 'LA':
-          var location1 = new Maps(34.0549, -118.2445, 'staplesCenter', 15);
+          var location1 = new Maps(34.044227, -118.267254, 'staplesCenter', 15);
           location1.render();
-          var weather = new Weather(34.0549, -118.2445)
+          var weather = new Weather(34.044227, -118.267254)
           break;
         case 'NYC':
           var location2 = new Maps(40.7306, -73.9867, 'rockefellerCenter', 15);
@@ -70,9 +68,9 @@ class BegModal {
           var weather = new Weather(35.6828, 139.759)
           break;
         case 'SF':
-          var location4 = new Maps(37.7793, -122.4193, 'goldenGateBridge', 15);
+          var location4 = new Maps(37.820090, -122.477654, 'goldenGateBridge', 13);
           location4.render();
-          var weather = new Weather(37.7793, -122.4193)
+          var weather = new Weather(37.820090, -122.477654)
           break;
         case 'paris':
           var location5 = new Maps(48.8566, 2.3515, 'eiffelTower', 15);
@@ -85,9 +83,9 @@ class BegModal {
           var weather = new Weather(-26.2051, 28.0497)
           break;
         case 'southAmerica':
-          var location7 = new Maps(-28.6681, -49.3384, 'iguazuFalls', 15);
+          var location7 = new Maps(-25.689746, -54.440882, 'iguazuFalls', 13);
           location7.render();
-          var weather = new Weather(-28.6681, -49.3384)
+          var weather = new Weather(-25.689746, -54.440882)
           break;
         case 'southKorea':
           var location8 = new Maps(37.5667, 126.9783, 'seoul', 15);
@@ -100,9 +98,9 @@ class BegModal {
           var weather = new Weather(51.5073, -0.1277)
           break;
         case 'irvine':
-          var location10 = new Maps(37.7006, -83.9739, 'learningFuze', 15);
+          var location10 = new Maps(33.635196, -117.740545, 'learningFuze', 15);
           location10.render();
-          var weather = new Weather(37.7006, -83.9739)
+          var weather = new Weather(33.635196, -117.740545)
           break;
       }
     };
