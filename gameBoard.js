@@ -109,15 +109,10 @@ class GameBoard{
 
     if(turn === 1){
 
-<<<<<<< HEAD
-      $("#poke1").removeClass("animationUp");
-      $("#poke2").addClass("animationUp");
-=======
       $("#p1Fighter1").toggle();
       $("#p1Fighter1").toggle();
 
       this.attackSound.play();
->>>>>>> 8ba83d20db1ad239271aae40d8ca85ee339b519b
 
       $(".textModalContent").text(pokemon1.name + " attacked " + pokemon2.name + " for " + pokemon1Damage + " damage.");
       pokemon2.hp -= pokemon1Damage;
@@ -131,7 +126,7 @@ class GameBoard{
 
       $("#p2Fighter1").toggle();
       $("#p2Fighter1").toggle();
-      
+
       this.attackSound.play();
 
       $(".textModalContent").text(pokemon2.name + " attacked " + pokemon1.name + " for " + pokemon2Damage + " damage.");
