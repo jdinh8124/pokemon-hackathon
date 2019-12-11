@@ -6,6 +6,8 @@ class GameBoard{
     this.pokemonToFight = [];
     this.playerNumber = 1;
     this.backgroundMusic = new Audio("assets/pokemonbattle.mp3");
+    this.attackSound = new Audio("assets/Slam.wav");
+    this.dyingSound = new Audio("assets/SilvallyFaintingCry.mp3")
     this.nextRound = this.nextRound.bind(this);
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
@@ -45,8 +47,7 @@ class GameBoard{
   }
 
   prepBattle(){
-
-    // this.backgroundMusic.play();
+    this.backgroundMusic.play();
     console.log("waiting on music")
 
     var turn = 0;
@@ -108,6 +109,7 @@ class GameBoard{
     // $(".p2Fighter1").text(pokemon2.hp);
     // debugger
     if(turn === 1){
+      this.attackSound.play();
       $(".textModalContent").text(pokemon1.name + " attacked " + pokemon2.name + " for " + pokemon1Damage + " damage.");
       pokemon2.hp -= pokemon1Damage;
       console.log(pokemon2.name + " hp: " + pokemon2.hp);
@@ -118,6 +120,7 @@ class GameBoard{
       $(".bottomHPBar").text(pokemon2.hp);
       // $(".textModalContent").append(battleText.text(pokemon2.name + " hp: " + pokemon2.hp));
     } else if (turn === 2){
+      this.attackSound.play();
       $(".textModalContent").text(pokemon2.name + " attacked " + pokemon1.name + " for " + pokemon2Damage + " damage.");
       pokemon1.hp -= pokemon2Damage;
       console.log(pokemon1.name + " hp: " + pokemon1.hp);
@@ -143,6 +146,7 @@ class GameBoard{
       }
       this.pokemonBattle(pokemon1, pokemon2, turn);
     } else {
+      this.dyingSound.play();
       this.endFight(pokemon1, pokemon2);
 
     }
