@@ -301,7 +301,7 @@ top: 89.5%;
 .selected{
   border: 3px solid goldenrod;
   opacity: 90%;
-
+  border-radius: 3%;
 }
 .weather {
     position: relative;
