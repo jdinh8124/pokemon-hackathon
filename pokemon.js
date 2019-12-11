@@ -17,9 +17,13 @@ class Pokemon {
     this.defense = null;
     this.experience = null;
     this.elementType = null;
-    this.elementInfo = null
+    this.elementInfo = null,
+    this.weakness = null,
     this.addToArena = addToArena;
+    this.assignWeakness = this.assignWeakness.bind(this);
+    this.getTypeWeakness = this.getTypeWeakness.bind(this);
     this.renderPokemon = this.renderPokemon.bind(this);
+
     this.getPokemonFromServer = this.getPokemonFromServer.bind(this);
     this.getPokemonFromServer(this.randomPokeNum);
   }
@@ -61,6 +65,7 @@ class Pokemon {
     console.log(response.responseText);
   }
   render() {
+    this.getTypeWeakness();
     var current = this;
     var thisPokemon = this.getStats();
     var typeToUpper = this.elementType.charAt(0).toUpperCase() + this.elementType.slice(1);
@@ -89,6 +94,24 @@ class Pokemon {
     //     });
     // }
   }
+  getTypeWeakness() {
+
+    $.ajax({
+      dataType: "json",
+      url: this.elementInfo,
+      method: "GET",
+      success: this.assignWeakness,
+      error: this.processPokemonError,
+    });
+  }
+
+  assignWeakness(response) {
+    console.log(response);
+    var weaknessess = response["damage_relations"]["double_damage_from"];
+    this.weakness = response["damage_relations"]["double_damage_from"];
+    return weaknessess;
+  }
+
   toGameBoard() {
 
     if (this.playerNum % 2 === 0) {
@@ -115,8 +138,12 @@ class Pokemon {
       hp: this.hp,
       specialDefense: this.specialDefense,
       defense: this.defense,
-      toGameBoard: this.toGameBoard
+      toGameBoard: this.toGameBoard,
+      type: this.elementType,
+      typeInfo: this.elementInfo,
+      weakness: this.getTypeWeakness
     }
     return pokeStats;
   }
+
 }
