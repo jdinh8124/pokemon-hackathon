@@ -13,8 +13,8 @@ class Maps {
   }
 
   render() {
-    this.createLocationDiv = $("<div>").attr("id", this.location).addClass("map " + this.location);
-    //need to append this to the front modal (.displayMap)
+    this.createLocationDiv = $("<div>")
+    this.createLocationDiv = $("<div>").attr("id", this.location);
     $(".displayMap").append(this.createLocationDiv);
     this.loadMap();
   }

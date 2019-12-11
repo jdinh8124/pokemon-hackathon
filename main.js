@@ -1,8 +1,10 @@
 $(document).ready(initializeApp);
 
 function initializeApp() {
+
   var game = new GameBoard();
   game.gameSetup();
+
 
   $('.startModal').removeClass('hidden');
   $('.pokedex').addClass('hidden');
@@ -10,6 +12,9 @@ function initializeApp() {
   $('.mapList').on('click', dropDownList);
   $('.active').on('click', ".locationChoice", clickOnMapLocation);
   $('.playButton').on('click',displayMapModal);
+
+  var startingModal = new BegModal ();
+
 
   var taco = new Taco
   taco.getTacoFromServer();
@@ -24,6 +29,7 @@ function displayMapModal() {
 function startTacoVideo() {
   $("iframe").attr('src', "https://www.youtube.com/embed/npjF032TDDQ?&autoplay=1")
 }
+
 
 /*** front modal stuff ***/
 function dropDownList() {
@@ -108,3 +114,4 @@ function selectMap(city) {
 
   }
 }
+
