@@ -4,15 +4,21 @@ function initializeApp() {
   var game = new GameBoard();
   game.gameSetup();
 
-
-  // $('.startModal').removeClass('hidden'); //hide show beggining MAP modal
-
+  $('.startModal').removeClass('hidden');
+  $('.pokedex').addClass('hidden');
+  playButtonHover();
   $('.mapList').on('click', dropDownList);
   $('.active').on('click', ".locationChoice", clickOnMapLocation);
+  $('.playButton').on('click',displayMapModal);
 
   var taco = new Taco
   taco.getTacoFromServer();
 
+}
+/*** modal play now button */
+function displayMapModal() {
+  $('.playButton').css('opacity','20%');
+  $('.pokedex').removeClass('hidden');
 }
 
 function startTacoVideo() {
@@ -31,6 +37,20 @@ function clickOnMapLocation(event) {
   var city = locationClick.attr('id');
   selectMap(city);
 
+  $('.listOfMapLocations').addClass('hidden');
+
+  setTimeout(function(){
+      $('.startModal').addClass('hidden');
+  },4000);
+}
+
+function playButtonHover(){
+  setInterval(function(){
+    $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
+    setTimeout(function(){
+      $('.playButton').addClass('playButton:hover').css("transform", "scale(1.0");
+    },300)
+  },1500);
 }
 
 function selectMap(city) {
