@@ -16,6 +16,7 @@ function initializeApp() {
 /*** modal play now button */
 function displayMapModal() {
   $('.playButton').addClass('hidden');
+
 }
 
 function startTacoVideo() {
@@ -33,6 +34,13 @@ function clickOnMapLocation(event) {
   var locationClick = $(event.currentTarget);
   var city = locationClick.attr('id');
   selectMap(city);
+
+  $('.listOfMapLocations').addClass('hidden');
+
+  setTimeout(function(){
+      $('.startModal').addClass('hidden');
+  },4000)
+
 
 }
 
