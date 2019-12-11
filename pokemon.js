@@ -83,6 +83,7 @@ class Pokemon{
       .on("click", function(){
         current.addToArena(thisPokemon);
       });
+
     } else {
       $("#icon" + this.playerNum)
       .css("background-image", 'url(' + this.frontSprite + ')')
@@ -93,9 +94,9 @@ class Pokemon{
   }
 
   toGameBoard(){
-    var pokemonToField = $("<div>")
-    .css("background-image", 'url(' + this.frontSprite + ')')
-    .addClass("pokemonInArena");
+    // var pokemonToField = $("<div>")
+    // .css("background-image", 'url(' + this.frontSprite + ')')
+    // .addClass("pokemonInArena");
 
 
     if(this.playerNum % 2 === 0){

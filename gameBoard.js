@@ -10,6 +10,7 @@ class GameBoard{
     this.pokemonBattle = this.pokemonBattle.bind(this);
     // this.handleKeyPress = this.handleKeyPress.bind(this);
     // $('html').on("keydown", this.handleKeyPress);
+
   }
 
   gameSetup(){
@@ -60,6 +61,7 @@ class GameBoard{
   }
 
   addPokemonToArena(pokemon){
+
     this.pokemonToFight.push(pokemon);
 
     console.log(pokemon.playerNum);
@@ -99,20 +101,20 @@ class GameBoard{
 
     var battleText = $("<div>");
     console.log(turn);
+    $(".p1Fighter1").text(pokemon1.hp);
+    $(".p2Fighter1").text(pokemon2.hp);
     if(turn === 1){
-      // console.log("p1dmg" + pokemon1Damge);
-      console.log(pokemon1.name + " attacked!");
-      $(".textModalContent").text(pokemon1.name + " attacked!");
+      $(".textModalContent").text(pokemon1.name + " attacked " + pokemon2.name + " for " + pokemon1Damage + " damage.");
       pokemon2.hp -= pokemon1Damage;
       console.log(pokemon2.name + " hp: " + pokemon2.hp);
-      $(".textModalContent").append(battleText.text(pokemon2.name + " hp: " + pokemon2.hp));
+      $(".p2Fighter1").text(pokemon2.hp);
+      // $(".textModalContent").append(battleText.text(pokemon2.name + " hp: " + pokemon2.hp));
     } else if (turn === 2){
-      // console.log("p2dmg" + pokemon2Damge);
-      console.log(pokemon2.name + " attacked!");
-      $(".textModalContent").text(pokemon2.name + " attacked!");
+      $(".textModalContent").text(pokemon2.name + " attacked " + pokemon1.name + " for " + pokemon2Damage + " damage.");
       pokemon1.hp -= pokemon2Damage;
       console.log(pokemon1.name + " hp: " + pokemon1.hp);
-      $(".textModalContent").append(battleText.text(pokemon1.name + " hp: " + pokemon1.hp));
+      $(".p1Fighter1").text(pokemon1.hp);
+      // $(".textModalContent").append(battleText.text(pokemon1.name + " hp: " + pokemon1.hp));
     }
 
     var current = this;
