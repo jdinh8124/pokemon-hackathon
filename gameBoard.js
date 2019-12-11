@@ -132,7 +132,7 @@ class GameBoard{
 
       this.attackSound.play();
 
-      $(".textModalContent").text(pokemon2.name + " attacked " + pokemon1.name + " for " + pokemon2Damage + " damage.");
+      $(".textModalContent").text(this.ifCrit + pokemon2.name + " attacked " + pokemon1.name + " for " + pokemon2Damage + " damage.");
       pokemon1.hp -= pokemon2Damage;
       console.log(pokemon1.name + " hp: " + pokemon1.hp);
 
