@@ -6,6 +6,7 @@ function initializeApp() {
 
   $('.startModal').removeClass('hidden');
   $('.pokedex').addClass('hidden');
+  playButtonHover();
   $('.mapList').on('click', dropDownList);
   $('.active').on('click', ".locationChoice", clickOnMapLocation);
   $('.playButton').on('click',displayMapModal);
@@ -16,7 +17,7 @@ function initializeApp() {
 }
 /*** modal play now button */
 function displayMapModal() {
-  $('.playButton').addClass('hidden');
+  $('.playButton').css('opacity','20%');
   $('.pokedex').removeClass('hidden');
 }
 
@@ -40,9 +41,16 @@ function clickOnMapLocation(event) {
 
   setTimeout(function(){
       $('.startModal').addClass('hidden');
-  },5000)
+  },4000);
+}
 
-
+function playButtonHover(){
+  setInterval(function(){
+    $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
+    setTimeout(function(){
+      $('.playButton').addClass('playButton:hover').css("transform", "scale(1.0");
+    },300)
+  },1500);
 }
 
 function selectMap(city) {
