@@ -23,7 +23,7 @@ class Taco{
     var tacoText = $('<h4>').text(this.recipe);
     var tacoTitle = $("<h1>").text("Taco Rare Candy")
     var tacoPicture = $("<img>").attr("src", "assets/taco.png").attr("alt", "broken");
-      $(".tacoRecipe").append(tacoTitle,tacoText, tacoPicture);
+      $(".tacoRecipe").append(tacoTitle,tacoPicture, tacoText);
 
     // this.baseLayerRecipe = response.base_layer.recipe;
     //   $(".tacoBaseRecipe").text(this.baseLayerRecipe);
