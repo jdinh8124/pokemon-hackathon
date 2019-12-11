@@ -64,7 +64,7 @@ class Weather{
   }
   cityBackground(){
     //LA STAPLE CENTER
-    if (this.lat === 34.052235 && this.lon === -118.2445) {
+    if (this.lat === 34.0549 && this.lon === -118.2445) {
       $(".gameContainer").css("background-image", 'url(' + "assets/STAPLESCenternight.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
     }  //NYC Rockerfeller
     else if (this.lat === 40.7306 && this.lon ===  -73.9867) {
