@@ -112,12 +112,12 @@ class Pokemon{
       $(".p2Fighter1")
       .toggleClass("hidden")
       .css("background-image", 'url(' + this.backSprite + ')');
-      $(".topHPBar").text(this.hp);
+      $(".topHPBar").text(this.hp).css("width", "80%");
     } else {
       $(".p1Fighter1")
       .toggleClass("hidden")
       .css("background-image", 'url(' + this.frontSprite + ')');
-      $(".bottomHPBar").text(this.hp);
+      $(".bottomHPBar").text(this.hp).css("width", "80%");
     }
   }
 
