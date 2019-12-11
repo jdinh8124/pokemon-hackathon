@@ -3,6 +3,7 @@ class BegModal {
       this.dropDownList = this.dropDownList.bind(this);
       this.clickOnMapLocation = this.clickOnMapLocation.bind(this);
       this.selectMap = this.selectMap.bind(this);
+      // this.wasPlayButtonClicked = this.wasPlayButtonClicked.bind(this);
 
       this.playButtonHover();
       $('.startModal').removeClass('hidden');
@@ -13,9 +14,14 @@ class BegModal {
     }
 
 /*** front modal stuff ***/
+    // wasPlayButtonClicked(){
+
+    // }
+
     displayMapList(){
       $('.playButton').css('opacity', '20%');
       $('.pokedex').removeClass('hidden');
+      $('.playButton').removeClass('playButton:hover').css("transform","none")
     }
 
     dropDownList() {
