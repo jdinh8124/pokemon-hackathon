@@ -5,6 +5,7 @@ function initializeApp() {
   game.gameSetup();
 
   $('.startModal').removeClass('hidden');
+  $('.pokedex').addClass('hidden');
   $('.mapList').on('click', dropDownList);
   $('.active').on('click', ".locationChoice", clickOnMapLocation);
   $('.playButton').on('click',displayMapModal);
@@ -16,7 +17,7 @@ function initializeApp() {
 /*** modal play now button */
 function displayMapModal() {
   $('.playButton').addClass('hidden');
-
+  $('.pokedex').removeClass('hidden');
 }
 
 function startTacoVideo() {
@@ -39,7 +40,7 @@ function clickOnMapLocation(event) {
 
   setTimeout(function(){
       $('.startModal').addClass('hidden');
-  },4000)
+  },5000)
 
 
 }
