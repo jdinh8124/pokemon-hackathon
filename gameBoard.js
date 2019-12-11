@@ -44,7 +44,7 @@ class GameBoard{
 
   prepBattle(){
 
-    this.backgroundMusic.play();
+    // this.backgroundMusic.play();
     console.log("waiting on music")
 
     var turn = 0;
