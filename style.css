@@ -443,6 +443,7 @@ top: 89.5%;
   font-size: 45px;
   transition: all .2s ease-in-out;
   margin: 0 0 0 2%;
+  cursor: pointer;
 }
 .playButton:hover {
    transform: scale(1.1);
