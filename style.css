@@ -167,13 +167,14 @@ body{
   z-index: 1;
   top: 24vh;
   left: 2vw;
-  border-radius: 12%/50% 7px;
+      /* border-radius: 5%; */
   border: 3px solid black;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612);
   overflow: hidden;
   scrollbar-track-color: antiquewhite;
 }
 .textModalContent{
+  display: flex;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -181,9 +182,7 @@ body{
   height: 99%;
   width: 100%;
   overflow-y: auto;
-  padding-right: 5px;
   scrollbar-color: rgb(237, 225, 190);
-  padding-top: 50%;
 }
 .winModal{
   display: flex;
@@ -195,7 +194,8 @@ body{
   top: 5%;
   left: 6%;
   z-index: 4;
-  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612);
+  /* box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612); */
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
 }
 .tacoModal{
   display: table-cell;
@@ -214,7 +214,7 @@ body{
   top: 5%;
   right: 2%;
   z-index: 3;
-  box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612);
+  box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -5px rgba(0, 0, 0, 0.4);
 
 }
 
@@ -239,6 +239,7 @@ body{
   border: 3px solid black;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.612);
   overflow: hidden;
+    /* border-radius: 5%; */
 }
 
 .statsInside{
