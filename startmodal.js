@@ -4,18 +4,27 @@ class BegModal {
       this.dropDownList = this.dropDownList.bind(this);
       this.clickOnMapLocation = this.clickOnMapLocation.bind(this);
       this.selectMap = this.selectMap.bind(this);
+
+      this.playButtonHover = this.playButtonHover.bind(this);
+      this.stopButtonHover = this.stopButtonHover.bind(this);
+
       this.fiveSecCountdown = this.fiveSecCountdown.bind(this);
 
       this.timeLeft = 5;
       this.timer = null;
 
 
+
       this.playButtonHover();
+
       $('.startModal').removeClass('hidden');
       $('.pokedex').addClass('hidden');
       $('.mapList').on('click', this.dropDownList);
       $('.battleField').on('click', ".locationChoice", this.clickOnMapLocation);
       $('.playButton').on('click', this.displayMapList);
+
+      this.intervalId;
+
     }
 
 /*** front modal stuff ***/
@@ -39,6 +48,10 @@ class BegModal {
 
       $('.listOfMapLocations').addClass('hidden');
 
+          this.stopButtonHover();
+      setTimeout(() => {
+
+
       //add here
       $('.playButton').css('opacity','100%')
       this.fiveSecCountdown();
@@ -47,18 +60,31 @@ class BegModal {
 
       setTimeout(function () {
         $('.startModal').addClass('hidden');
+
+
       }, 5000);
     }
 
     playButtonHover() {
+
+        this.intervalId = setInterval( function() {
+
       setInterval(function () {
+
         $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
+        console.log('stillgoing')
         setTimeout(function () {
           $('.playButton').addClass('playButton:hover').css("transform", "scale(1.0");
         }, 400)
       }, 1100);
+
     }
 
+    stopButtonHover(){
+      console.log('stopButtonHover Fired')
+      clearInterval(this.intervalId);
+        }
+        
     //create function for countdown
     fiveSecCountdown(){
       if (this.timeLeft == -1){
