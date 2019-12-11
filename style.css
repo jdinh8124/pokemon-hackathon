@@ -63,13 +63,13 @@ body{
   width: 33.3333333%;
   background-color: rgb(230, 219, 234);
   border: 3px solid black;
-  cursor: pointer;
+
 }
 .pokeIcon{
   display: flex;
   height: 95%;
   width: 100%;
-
+  cursor: pointer;
 
   background-repeat: no-repeat;
   background-position: center;
@@ -264,10 +264,11 @@ body{
 .type{
   position: fixed ;
   top: 0vw;
-  height: 19vw;
-  width: 19vw;
-  z-index: 1;
+  height: 11%;
+  width: 4%;
+  z-index: 0;
   background-repeat: no-repeat;
+  background-size: contain;
 }
 .element1, .element3, .element5 {
 top: 9.5%;
