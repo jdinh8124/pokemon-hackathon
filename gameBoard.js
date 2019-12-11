@@ -105,7 +105,7 @@ class GameBoard{
 
   randomPokemonNumber(){
    return Math.floor(Math.random() * 147 + 1);
-  }
+   }
 
   pokemonBattle(pokemon1, pokemon2, turn){
     // console.log(pokemon1, pokemon2);
