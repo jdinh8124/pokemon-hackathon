@@ -4,8 +4,7 @@ function initializeApp() {
   var game = new GameBoard();
   game.gameSetup();
 
-  $('.startModal').removeClass('hidden'); //hide show beggining MAP modal
-
+  $('.startModal').removeClass('hidden');
   $('.mapList').on('click', dropDownList);
   $('.active').on('click', ".locationChoice", clickOnMapLocation);
   $('.playButton').on('click',displayMapModal);
