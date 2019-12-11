@@ -84,7 +84,7 @@ class BegModal {
       console.log('stopButtonHover Fired')
       clearInterval(this.intervalId);
         }
-        
+
     //create function for countdown
     fiveSecCountdown(){
       if (this.timeLeft == -1){
