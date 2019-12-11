@@ -7,10 +7,15 @@ function initializeApp() {
   $('.startModal').removeClass('hidden');
   $('.mapList').on('click', dropDownList);
   $('.active').on('click', ".locationChoice", clickOnMapLocation);
+  $('.playButton').on('click',displayMapModal);
 
   var taco = new Taco
   taco.getTacoFromServer();
 
+}
+/*** modal play now button */
+function displayMapModal() {
+  $('.playButton').addClass('hidden');
 }
 
 function startTacoVideo() {
