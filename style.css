@@ -7,7 +7,7 @@ html{
 }
 @font-face{
   font-family: "Poketext";
-  src: url("/assets/Poketext.ttf");
+  src: url("./assets/Poketext.ttf");
 }
 body{
   display: flex;
