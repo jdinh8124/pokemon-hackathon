@@ -76,11 +76,11 @@ class Weather{
     else if (this.lat === 37.820090 && this.lon === -122.477654) {
       $(".gameContainer").css("background-image", 'url(' + "assets/GoldenGateBridge-001.jpg" + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "center");
     } // Paris - eiffel Tower
-    else if (this.lat === 48.8566 && this.lon === 2.3515){
-      //Johannesburg
-      $(".gameContainer").css("background-image", 'url(' + "assets/paris.jpg " + ')').css("background-size", "cover").css("background-repeat", "no-repeat");
-    } //Brazil Igazu Falls
-      else if (this.lat === -25.689746 && this.lon === -54.440882) {
+    else if (this.lat === 64.2408 && this.lon === 56.6271){
+      $(".gameContainer").css("background-image", 'url(' + "assets/antarctica.jpg " + ')').css("background-size", "cover").css("background-repeat", "no-repeat").css("background-position", "bottom");
+    }     
+     //Brazil Igazu Falls
+     else if (this.lat === -25.689746 && this.lon === -54.440882) {
      //South Korea
       $(".gameContainer").css("background-image", 'url(' + "assets/johan.jpg " + ')').css("background-size", "cover").css("background-repeat", "no-repeat");
     } //London
