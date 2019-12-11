@@ -5,7 +5,10 @@ html{
   overflow: hidden;
   /* box-sizing: border-box; */
 }
-
+@font-face{
+  font-family: "Poketext";
+  src: url("/assets/Poketext.ttf");
+}
 body{
   display: flex;
   flex-direction: column;
@@ -80,7 +83,7 @@ body{
 .hpBar{
   margin: 1% 0 0 1%;
   width: 80%;
-  height: 5%;
+  height: 10%;
   background-color: green;
   transition: 10ms;
 
@@ -184,6 +187,7 @@ body{
   scrollbar-track-color: antiquewhite;
 }
 .textModalContent{
+  font-family: "Poketext";
   display: flex;
   text-align: center;
   justify-content: center;
@@ -391,8 +395,10 @@ top: 89.5%;
 .startModal{
   height: 100%;
   width: 100%;
+
   background-color: white;
   /* border: 1px solid black; */
+
   position: absolute;
   top: 0%;
   left: 0%;
@@ -455,6 +461,7 @@ top: 89.5%;
   font-size: 20px;
   background: #660000;
   border:none;
+
   box-shadow: none;
   outline: none;
   cursor: pointer;

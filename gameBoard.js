@@ -9,10 +9,17 @@ class GameBoard{
     this.attackSound = new Audio("assets/Slam.wav");
     this.dyingSound = new Audio("assets/SilvallyFaintingCry.mp3")
     this.nextRound = this.nextRound.bind(this);
+
+
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
     this.player1Wins = 0;
     this.player2Wins = 0;
+
+    //battle things
+    this.ifCrit = "";
+    this.p1typeWeakness = null;
+    this.p2typeWeakness = null;
     // this.handleKeyPress = this.handleKeyPress.bind(this);
     // $('html').on("keydown", this.handleKeyPress);
     $(".restartButton").on("click", this.nextRound);
@@ -67,19 +74,21 @@ class GameBoard{
 
   addPokemonToArena(pokemon){
 
-    this.pokemonToFight.push(pokemon);
+    // this.pokemonToFight.push(pokemon);
 
     console.log(pokemon.playerNum);
     if(pokemon.playerNum % 2 !== 0){
       $("#icon"+1).off("click").addClass("unselectable");
       $("#icon" + 3).off("click").addClass("unselectable");
-      $("#icon" + 5).off("click").addClass("unselectable");
+      this.pokemonToFight[0] = pokemon;
     } else{
       $("#icon" + 2).off("click").addClass("unselectable");
       $("#icon" + 4).off("click").addClass("unselectable");
       $("#icon" + 6).off("click").addClass("unselectable");
+      this.pokemonToFight[1] = pokemon;
     }
     $("#icon" + pokemon.playerNum).addClass("selected").removeClass("shadowed");
+
     pokemon.toGameBoard();
     console.log(pokemon.name + " is ready to fight!");
     if (this.pokemonToFight.length === 2){
@@ -95,26 +104,19 @@ class GameBoard{
 
   pokemonBattle(pokemon1, pokemon2, turn){
     // console.log(pokemon1, pokemon2);
-    var pokemon1Damage = pokemon1.attack - Math.floor(pokemon1.defense / 1.5);
-    var pokemon2Damage = pokemon2.attack - Math.floor(pokemon1.defense / 1.5);
-    if (pokemon1Damage <= 0){
-      pokemon1Damage = 2;
-    }
-    if (pokemon2Damage <= 0) {
-      pokemon2Damage = 2;
-    }
+    this.ifCrit = "";
+    var pokemon1Atk = this.checkAttackStat(pokemon1); //[atk, type to defend]
+    var pokemon2Atk = this.checkAttackStat(pokemon2);
 
-    var battleText = $("<div>");
-    console.log(turn);
 
     if(turn === 1){
-
+      var pokemon1Damage = this.pokemonDamage(pokemon1, pokemon2, pokemon1Atk);
       $("#p1Fighter1").toggle();
       $("#p1Fighter1").toggle();
 
       this.attackSound.play();
 
-      $(".textModalContent").text(pokemon1.name + " attacked " + pokemon2.name + " for " + pokemon1Damage + " damage.");
+      $(".textModalContent").text(this.ifCrit + pokemon1.name + " attacked " + pokemon2.name + " for " + pokemon1Damage + " damage.");
       pokemon2.hp -= pokemon1Damage;
       console.log(pokemon2.name + " hp: " + pokemon2.hp);
 
@@ -123,7 +125,7 @@ class GameBoard{
       $(".bottomHPBar").text(pokemon2.hp);
 
     } else if (turn === 2){
-
+      var pokemon2Damage = this.pokemonDamage(pokemon2, pokemon1, pokemon2Atk);
       $("#p2Fighter1").toggle();
       $("#p2Fighter1").toggle();
 
@@ -144,11 +146,56 @@ class GameBoard{
     }, 1500);
   }
 
+  checkAttackStat(pokemon){
+    if(pokemon.attack >= pokemon.specialAttack){
+      return [pokemon.attack, "defense"];
+    } else {
+      return [pokemon.specialAttack, "specialDefense"];
+    }
+  }
+
+  pokemonDamage(attackingPokemon, defendingPokemon, attackingInfo){
+    var damage = Math.floor(7 * (attackingInfo[0] / defendingPokemon[attackingInfo[1]]));
+    var critHit = this.isCrit();
+    // var extraTypeDamage = this.isWeak(defendingPokemon);
+    if(critHit){
+      console.log("crit");
+      return Math.floor(damage*1.5);
+    } else {
+      return damage;
+    }
+  }
+
+  isCrit(){
+    var randomChance = Math.floor(Math.random() * 10 + 1);
+    if(randomChance === 6){
+      this.ifCrit = "Critical Hit! ";
+      return true;
+    } else {
+      this.ifCrit = "";
+      return false;
+    }
+  }
+
+  isWeak(defendingPokemon){
+    if (defendingPokemon.playerNum % 2 === 0){
+      for(let typeIndex = 0; typeIndex < defendingPokemon.weakness.length; typeIndex++){
+        if(this.p2typeWeakness[typeIndex].name === defendingPokemon.type){
+          console.log("WEAK");
+        }
+      }
+    } else {
+      for (let typeIndex = 0; typeIndex < defendingPokemon.weakness.length; typeIndex++) {
+        if (this.p1typeWeakness[typeIndex].name === defendingPokemon.type) {
+          console.log("WEAK");
+        }
+      }
+    }
+  }
+
   checkFaint(pokemon1, pokemon2, turn){
     if (pokemon1.hp > 0 && pokemon2.hp > 0) {
-      console.log("round2");
       if(turn === 1){
-
         turn++;
       } else {
         turn--;
@@ -194,6 +241,8 @@ class GameBoard{
     $(".p2Fighter1").toggleClass("hidden");
     this.gameSetup();
   }
+
+
 
 
 }
