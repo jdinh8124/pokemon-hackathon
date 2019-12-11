@@ -4,14 +4,19 @@ function initializeApp() {
   var game = new GameBoard();
   game.gameSetup();
 
-
   $('.startModal').removeClass('hidden'); //hide show beggining MAP modal
 
   $('.mapList').on('click', dropDownList);
   $('.active').on('click', ".locationChoice", clickOnMapLocation);
+  $('.playButton').on('click',displayMapModal);
 
   var taco = new Taco
   taco.getTacoFromServer();
+
+}
+/*** modal play now button */
+function displayMapModal() {
+  $('.playButton').addClass('hidden');
 
 }
 
@@ -30,6 +35,13 @@ function clickOnMapLocation(event) {
   var locationClick = $(event.currentTarget);
   var city = locationClick.attr('id');
   selectMap(city);
+
+  $('.listOfMapLocations').addClass('hidden');
+
+  setTimeout(function(){
+      $('.startModal').addClass('hidden');
+  },4000)
+
 
 }
 
