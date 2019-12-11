@@ -80,6 +80,7 @@ class GameBoard{
     if(pokemon.playerNum % 2 !== 0){
       $("#icon"+1).off("click").addClass("unselectable");
       $("#icon" + 3).off("click").addClass("unselectable");
+      $("#icon" + 5).off("click").addClass("unselectable");
       this.pokemonToFight[0] = pokemon;
     } else{
       $("#icon" + 2).off("click").addClass("unselectable");
