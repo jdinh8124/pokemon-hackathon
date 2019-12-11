@@ -9,7 +9,8 @@ class GameBoard{
     this.attackSound = new Audio("assets/Slam.wav");
     this.dyingSound = new Audio("assets/SilvallyFaintingCry.mp3")
     this.nextRound = this.nextRound.bind(this);
-
+    this.activateUzair = this.activateUzair.bind(this);
+    this.weatherCondition = $(".weatherImg").attr("src");
 
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
@@ -22,6 +23,7 @@ class GameBoard{
     this.p2typeWeakness = null;
     // this.handleKeyPress = this.handleKeyPress.bind(this);
     // $('html').on("keydown", this.handleKeyPress);
+    $(".topTrainerIconBox").on("click", this.activateUzair);
     $(".restartButton").on("click", this.nextRound);
   }
 
@@ -243,7 +245,32 @@ class GameBoard{
     this.gameSetup();
   }
 
+  activateUzair(){
+    console.log("ACTIVATE");
+    var uzairMon = {
+      name: "Uzair",
+      hp: 69,
+      attack: 420,
+      defense: 100,
+      speed: 100,
+      specialAttack: 69,
+      specialDefense: 100,
+      playerNum: 7,
+      toGameBoard: this.uzairRender,
 
+    }
+
+    this.addPokemonToArena(uzairMon);
+
+
+  }
+
+  uzairRender(){
+    $(".p1Fighter1")
+      .toggleClass("hidden")
+      .css("background-image", 'url("assets/uzairShieldBro.jpg")');
+    $(".topHPBar").css("width", "60%").text("69");
+  }
 
 
 }

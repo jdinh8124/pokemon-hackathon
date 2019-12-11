@@ -46,19 +46,19 @@ class Weather{
   }
   weatherModal() {
     if (this.weather === "Clouds") {
-      var weatherImg = $("<img>").attr("src", "assets/cloudy.PNG").attr("alt", "broken")
+      var weatherImg = $("<img>").attr("src", "assets/cloudy.PNG").attr("alt", "broken").addClass("weatherImg")
       $(".weatherStats").append(weatherImg)
     } else if (this.weather === "Rain" || this.weather === "Mist") {
       $(".gameContainer").addClass("weather rain");
-      var weatherImgRain = $("<img>").attr("src", "assets/rain.PNG").attr("alt", "broken");
+      var weatherImgRain = $("<img>").attr("src", "assets/rain.PNG").attr("alt", "broken").addClass("weatherImg");
       $(".weatherStats").append(weatherImgRain)
     } else if (this.weather === "Snow"){
       $(".gameContainer").addClass("weather snow");
-      var weatherImgSnow = $("<img>").attr("src", "assets/snow.PNG").attr("alt", "broken");
+      var weatherImgSnow = $("<img>").attr("src", "assets/snow.PNG").attr("alt", "broken").addClass("weatherImg");
       $(".weatherStats").append(weatherImgSnow)
     }
     else {
-      var weatherImgSun = $("<img>").attr("src", "assets/sunny.PNG").attr("alt", "broken");
+      var weatherImgSun = $("<img>").attr("src", "assets/sunny.PNG").attr("alt", "broken").addClass("weatherImg");
       $(".weatherStats").append(weatherImgSun)
     }
   }
