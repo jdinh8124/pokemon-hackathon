@@ -4,18 +4,13 @@ function initializeApp() {
   var game = new GameBoard();
   game.gameSetup();
 
-  $('.startModal').removeClass('hidden');
+  // $('.startModal').removeClass('hidden');
   $('.mapList').on('click', dropDownList);
   $('.active').on('click', ".locationChoice", clickOnMapLocation);
 
   var taco = new Taco
   taco.getTacoFromServer();
 
-
-
-  var weather = new Weather(34.052235, -118.2445)
-
-  // var weather = new Weather(-26.2051, 28.0497)
 
 }
 
