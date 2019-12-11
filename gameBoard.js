@@ -14,6 +14,8 @@ class GameBoard{
 
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
+
+    this.pokemonPowerScale = 0;
     this.player1Wins = 0;
     this.player2Wins = 0;
 

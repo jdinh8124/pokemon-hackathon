@@ -47,11 +47,11 @@ class Weather{
   weatherModal() {
     if (this.lat === -76.282679 && this.lon === 22.190994){
       $(".gameContainer").addClass("weather snow");
-      var weatherImgSnow = $("<img>").attr("src", "assets/snow.PNG").attr("alt", "broken");
+      var weatherImgSnow = $("<img>").attr("src", "assets/snow.PNG").attr("alt", "broken").addClass("weatherImg");
       $(".weatherStats").append(weatherImgSnow)
     }
     else if (this.weather === "Clouds") {
-      var weatherImg = $("<img>").attr("src", "assets/cloudy.PNG").attr("alt", "broken")
+      var weatherImg = $("<img>").attr("src", "assets/cloudy.PNG").attr("alt", "broken").addClass("weatherImg");
       $(".weatherStats").append(weatherImg)
     } else if (this.weather === "Rain" || this.weather === "Mist") {
       $(".gameContainer").addClass("weather rain");
@@ -59,7 +59,7 @@ class Weather{
       $(".weatherStats").append(weatherImgRain)
     } else if (this.weather === "Snow"){
       $(".gameContainer").addClass("weather snow");
-      var weatherImgSnowReal = $("<img>").attr("src", "assets/snow.PNG").attr("alt", "broken");
+      var weatherImgSnowReal = $("<img>").attr("src", "assets/snow.PNG").attr("alt", "broken").addClass("weatherImg");
       $(".weatherStats").append(weatherImgSnowReal)
     }
     else {
