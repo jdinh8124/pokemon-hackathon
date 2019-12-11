@@ -76,6 +76,7 @@ class Pokemon{
   render(){
     var current = this;
     var thisPokemon = this.getStats();
+
     if(this.playerNum % 2 === 0){
 
       $("#icon"+this.playerNum)
@@ -84,12 +85,16 @@ class Pokemon{
         current.addToArena(thisPokemon);
       });
 
+
+      $(".element" + this.playerNum).css("background-image", 'url(' + this.elementType + ".png" + ')')
+
     } else {
       $("#icon" + this.playerNum)
       .css("background-image", 'url(' + this.frontSprite + ')')
       .on("click", function () {
         current.addToArena(thisPokemon);
       });
+      $(".element" + this.playerNum).css("background-image", 'url(' + this.elementType + ".png" + ')')
     }
   }
 
