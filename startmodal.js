@@ -1,9 +1,14 @@
 class BegModal {
     constructor () {
+
       this.dropDownList = this.dropDownList.bind(this);
       this.clickOnMapLocation = this.clickOnMapLocation.bind(this);
       this.selectMap = this.selectMap.bind(this);
-      // this.wasPlayButtonClicked = this.wasPlayButtonClicked.bind(this);
+      this.fiveSecCountdown = this.fiveSecCountdown.bind(this);
+
+      this.timeLeft = 5;
+      this.timer = null;
+
 
       this.playButtonHover();
       $('.startModal').removeClass('hidden');
@@ -34,22 +39,35 @@ class BegModal {
 
       $('.listOfMapLocations').addClass('hidden');
 
+      //add here
+      $('.playButton').css('opacity','100%')
+      this.fiveSecCountdown();
+      this.timer = setInterval(this.fiveSecCountdown, 1000);
+
+
       setTimeout(function () {
         $('.startModal').addClass('hidden');
       }, 5000);
     }
 
     playButtonHover() {
-      //clearInterval(theFunction)
-      //theFunction  =
       setInterval(function () {
         $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
         setTimeout(function () {
           $('.playButton').addClass('playButton:hover').css("transform", "scale(1.0");
-        }, 300)
-      }, 1500);
+        }, 400)
+      }, 1100);
     }
 
+    //create function for countdown
+    fiveSecCountdown(){
+      if (this.timeLeft == -1){
+        clearTimeout(this.timer)
+      } else {
+        $('.playButton').text(this.timeLeft);
+        this.timeLeft--;
+      }
+    }
 
     selectMap(city) {
       switch (city) {
