@@ -1,17 +1,13 @@
 class BegModal {
     constructor () {
-
+      this.render = this.render.bind(this);
       this.dropDownList = this.dropDownList.bind(this);
       this.clickOnMapLocation = this.clickOnMapLocation.bind(this);
       this.selectMap = this.selectMap.bind(this);
-      this.playButtonHover = this.playButtonHover.bind(this);
-      this.stopButtonHover = this.stopButtonHover.bind(this);
+
       this.fiveSecCountdown = this.fiveSecCountdown.bind(this);
-      this.timeLeft = 5;
+      this.timeLeft = 3;
       this.timer = null;
-
-
-      this.playButtonHover();
 
       $('.startModal').removeClass('hidden');
       $('.pokedex').addClass('hidden');
@@ -20,15 +16,16 @@ class BegModal {
       $('.playButton').on('click', this.displayMapList);
 
       this.intervalId;
-
     }
 
-/*** front modal stuff ***/
+    render(){
+      $('.playButton').addClass('animateText');
+    }
 
     displayMapList(){
-      $('.playButton').css('opacity', '20%');
+      $('.playButton').css('opacity', '10%');
       $('.pokedex').removeClass('hidden');
-      $('.playButton').removeClass('playButton:hover').css("transform","none")
+      $('.playButton').removeClass('animateText');
     }
 
     dropDownList() {
@@ -38,48 +35,33 @@ class BegModal {
 
     clickOnMapLocation(event) {
       $('.displayMap').empty();
+      $('.playButton').addClass('animateText');
       var locationClick = $(event.currentTarget);
       var city = locationClick.attr('id');
       this.selectMap(city);
 
       $('.listOfMapLocations').addClass('hidden');
 
-      //add here
       $('.playButton').css('opacity','100%')
       this.fiveSecCountdown();
       this.timer = setInterval(this.fiveSecCountdown, 1000);
 
-        this.stopButtonHover();
       setTimeout(function () {
         $('.startModal').addClass('hidden');
-
       }, 5000);
     }
 
-    playButtonHover() {
 
-        this.intervalId = setInterval(function() {
-          $('.playButton').addClass('playButton:hover').css("transform", "scale(1.1");
-          console.log('stillgoing')
-          setTimeout(function () {
-            $('.playButton').addClass('playButton:hover').css("transform", "scale(1.0");
-          }, 400)
-        }, 1100);
-
-    }
-
-    stopButtonHover(){
-      console.log('stopButtonHover Fired')
-      clearInterval(this.intervalId);
-        }
-
-    //create function for countdown
     fiveSecCountdown(){
+      const playButton = $('.playButton')
       if (this.timeLeft == -1){
         clearTimeout(this.timer)
       } else {
         $('.playButton').text(this.timeLeft);
         this.timeLeft--;
+      }
+      if (playButton.text() === '0') {
+        playButton.text('GET READY');
       }
     }
 
