@@ -4,52 +4,44 @@ class GameBoard{
     this.player2Pokemon = null;
     this.pokemonPool = [];
     this.pokemonToFight = [];
-    this.playerNumber = 1;
     this.backgroundMusic = new Audio("assets/pokemonbattle.mp3");
     this.attackSound = new Audio("assets/Slam.wav");
     this.dyingSound = new Audio("assets/SilvallyFaintingCry.mp3")
     this.nextRound = this.nextRound.bind(this);
-
+    this.activateUzair = this.activateUzair.bind(this);
+    this.weatherCondition = $(".weatherImg").attr("src");
 
     this.addPokemonToArena = this.addPokemonToArena.bind(this);
     this.pokemonBattle = this.pokemonBattle.bind(this);
+
+    this.pokemonPowerScale = 0;
     this.player1Wins = 0;
     this.player2Wins = 0;
 
-    //battle things
     this.ifCrit = "";
     this.p1typeWeakness = null;
     this.p2typeWeakness = null;
-    // this.handleKeyPress = this.handleKeyPress.bind(this);
-    // $('html').on("keydown", this.handleKeyPress);
+    $(".topTrainerIconBox").on("click", this.activateUzair);
     $(".restartButton").on("click", this.nextRound);
   }
 
   gameSetup(){
-    //placeholder name for now
-    var pokemon1 = this.createPokemon();
-    this.playerNumber++;
-    var pokemon2 = this.createPokemon();
-    this.playerNumber++;
-    var pokemon3 = this.createPokemon();
-    this.playerNumber++;
-    var pokemon4 = this.createPokemon();
-    this.playerNumber++;
-    var pokemon5 = this.createPokemon();
-    this.playerNumber++;
-    var pokemon6 = this.createPokemon();
+    var pokemon1 = this.createPokemon(1);
+    var pokemon2 = this.createPokemon(2);
+    var pokemon3 = this.createPokemon(3);
+    var pokemon4 = this.createPokemon(4);
+    var pokemon5 = this.createPokemon(5);
+    var pokemon6 = this.createPokemon(6);
 
-
-    //pokemon renders
     this.pokemonPool.push(pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6);
     console.log(this.pokemonPool);
 
   }
 
-  createPokemon() {
+  createPokemon(slotNum) {
     var pokeId = this.randomPokemonNumber();
 
-    var pokemon = new Pokemon(this.playerNumber, pokeId, this.addPokemonToArena);
+    var pokemon = new Pokemon(slotNum, pokeId, this.addPokemonToArena);
     return pokemon;
   }
 
@@ -73,9 +65,6 @@ class GameBoard{
   }
 
   addPokemonToArena(pokemon){
-
-    // this.pokemonToFight.push(pokemon);
-
     console.log(pokemon.playerNum);
     if(pokemon.playerNum % 2 !== 0){
       $("#icon"+1).off("click").addClass("unselectable");
@@ -97,54 +86,43 @@ class GameBoard{
     }
   }
 
-
-
   randomPokemonNumber(){
-   return Math.floor(Math.random() * 20 + 1);
-  }
+   return Math.floor(Math.random() * 147 + 1);
+   }
 
   pokemonBattle(pokemon1, pokemon2, turn){
-    // console.log(pokemon1, pokemon2);
     this.ifCrit = "";
-    var pokemon1Atk = this.checkAttackStat(pokemon1); //[atk, type to defend]
-    var pokemon2Atk = this.checkAttackStat(pokemon2);
-
-
     if(turn === 1){
-      var pokemon1Damage = this.pokemonDamage(pokemon1, pokemon2, pokemon1Atk);
+      this.pokemonBattleLogic(pokemon1, pokemon2, turn);
       $("#p1Fighter1").toggle();
       $("#p1Fighter1").toggle();
-
-      this.attackSound.play();
-
-      $(".textModalContent").text(this.ifCrit + pokemon1.name + " attacked " + pokemon2.name + " for " + pokemon1Damage + " damage.");
-      pokemon2.hp -= pokemon1Damage;
-      console.log(pokemon2.name + " hp: " + pokemon2.hp);
-
-
-      $(".bottomHPBar").css("width", pokemon2.hp + "%");
-      $(".bottomHPBar").text(pokemon2.hp);
-
     } else if (turn === 2){
-      var pokemon2Damage = this.pokemonDamage(pokemon2, pokemon1, pokemon2Atk);
+      this.pokemonBattleLogic(pokemon2, pokemon1, turn);
       $("#p2Fighter1").toggle();
       $("#p2Fighter1").toggle();
-
-      this.attackSound.play();
-
-      $(".textModalContent").text(pokemon2.name + " attacked " + pokemon1.name + " for " + pokemon2Damage + " damage.");
-      pokemon1.hp -= pokemon2Damage;
-      console.log(pokemon1.name + " hp: " + pokemon1.hp);
-
-      $(".topHPBar").css("width", pokemon1.hp + "%");
-      $(".topHPBar").text(pokemon1.hp);
-
     }
-
     var current = this;
     setTimeout(function () {
       current.checkFaint(pokemon1, pokemon2, turn);
     }, 1500);
+  }
+
+  pokemonBattleLogic(attackingPokemon, defendingPokemon, turn){
+    let pokemon1Atk = this.checkAttackStat(attackingPokemon); //[atk, type to defend]
+    // let pokemon2Atk = this.checkAttackStat(defendingPokemon);
+    let pokemon1Damage = this.pokemonDamage(attackingPokemon, defendingPokemon, pokemon1Atk);
+    this.attackSound.play();
+
+    $(".textModalContent").text(this.ifCrit + attackingPokemon.name + " attacked " + defendingPokemon.name + " for " + pokemon1Damage + " damage.");
+    defendingPokemon.hp -= pokemon1Damage;
+    if(turn === 1){
+      $(".bottomHPBar").css("width", defendingPokemon.hp + "%");
+      $(".bottomHPBar").text(defendingPokemon.hp);
+    } else {
+      $(".topHPBar").css("width", defendingPokemon.hp + "%");
+      $(".topHPBar").text(defendingPokemon.hp);
+    }
+
   }
 
   checkAttackStat(pokemon){
@@ -225,17 +203,12 @@ class GameBoard{
       this.player2Wins++;
       $(".player2Stats").text(this.player2Wins);
     }
-    $(".winModal").toggleClass("hidden");
-    $(".tacoModal").toggleClass("hidden");
-    $(".restartButton").toggleClass("hidden");
+    this.toggleEndItems();
   }
 
+
   nextRound(){
-    this.playerNumber = 1;
-    console.log("asdf");
-    $(".winModal").toggleClass("hidden");
-    $(".tacoModal").toggleClass("hidden");
-    $(".restartButton").toggleClass("hidden");
+    this.toggleEndItems();
     $(".pokeIcon").removeClass("unselectable");
     $(".pokeIcon").removeClass("selected");
     $(".p1Fighter1").toggleClass("hidden");
@@ -243,7 +216,37 @@ class GameBoard{
     this.gameSetup();
   }
 
+  toggleEndItems() {
+    $(".winModal").toggleClass("hidden");
+    $(".tacoModal").toggleClass("hidden");
+    $(".restartButton").toggleClass("hidden");
+  }
 
+  activateUzair(){
+    console.log("ACTIVATE");
+    var uzairMon = {
+      name: "Uzair",
+      hp: 69,
+      attack: 420,
+      defense: 100,
+      speed: 100,
+      specialAttack: 69,
+      specialDefense: 100,
+      playerNum: 7,
+      toGameBoard: this.uzairRender,
+
+    }
+
+    this.addPokemonToArena(uzairMon);
+  }
+
+  uzairRender(){
+    $(".p1Fighter1")
+      .toggleClass("hidden")
+      .css("background-image", 'url("assets/uzairShieldBro.jpg")');
+    $(".topHPBar").css("width", "60%").text("69");
+    $(".topTrainerIconBox").off("click");
+  }
 
 
 }

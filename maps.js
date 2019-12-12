@@ -11,11 +11,10 @@ class Maps {
     this.render = this.render.bind(this);
     this.loadMap = this.loadMap.bind(this);
   }
-
   render() {
-    this.createLocationDiv = $("<div>")
-    this.createLocationDiv = $("<div>").attr("id", this.location);
-    $(".displayMap").append(this.createLocationDiv);
+    this.createLocation = $("<div>")
+    this.createLocation = $("<div>").attr("id", this.location);
+    $(".displayMap").append(this.createLocation);
     this.loadMap();
   }
 
