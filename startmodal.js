@@ -17,6 +17,7 @@ class BegModal {
       $('.playButton').css('opacity', '10%');
       $('.closedPokedex').removeClass('hidden');
       // $('.mainPokedex').removeClass('hidden');
+      $('.spinningPokeball').removeClass('hidden').addClass('spinBallOnce')
       $('.playButton').removeClass('animateText');
     }
 

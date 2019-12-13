@@ -472,14 +472,36 @@ top: 89.5%;
   height: 100%;
   width: 100%;
   background-image: url("./assets/pokedex/closed-pokedex.png");
-  background-size: 16.5% 49%;
+  background-size: 17.5% 50%;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 5;
 }
 .spinningPokeball{
+  position: absolute;
+  top: 1.7%;
+  left:-0.15%;
+  height: 100%;
+  width: 100%;
   background-image: url("./assets/pokedex/pokeball.png");
+  background-size: 8.5% 15.8%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 6;
+  /* opacity: 50%; */
+}
 
+@keyframes spinBallOnce {
+  0% {
+    transform: rotate(0deg) scale(1.28);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+.spinBallOnce{
+  animation: spinBallOnce 2s;
+  animation-fill-mode: forwards;
 }
 
 .displayMap{
