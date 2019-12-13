@@ -6,20 +6,32 @@ class BegModal {
       $('.mainPokedex').addClass('hidden');
       $('.mapList').on('click', this.dropDownList);
       $('.battleField').on('click', ".locationChoice", this.clickOnMapLocation);
-      $('.playButton').on('click', this.displayMapList);
+      $('.playButton').on('click', this.pokedex);
     }
 
     render = () => {
       $('.playButton').addClass('animateText');
     }
 
-    displayMapList(){
+    pokedex() {
       $('.playButton').css('opacity', '10%');
-      $('.closedPokedex').removeClass('hidden');
-      // $('.mainPokedex').removeClass('hidden');
-      $('.spinningPokeball').removeClass('hidden').addClass('spinBallOnce')
       $('.playButton').removeClass('animateText');
+      // $('.closedPokedex').removeClass('hidden');
+      $('.topPokedex').removeClass('hidden');
+      $('.bottomPokedex').removeClass('hidden');
+      // $('.spinningPokeball').removeClass('hidden').addClass('spinBallOnce');
+      // setTimeout(function (){
+      //   $('.closedPokedex').addClass('hidden');
+      //   $('.spinningPokeball').addClass('hidden');
+      // },3000)
+      // setTimeout(function (){
+      //    $('.mainPokedex').removeClass('hidden');
+      // },5000);
     }
+
+    // displayMapList = () => {
+
+    // }
 
     dropDownList = () => {
       $('ul').toggleClass('battleField');

@@ -503,6 +503,46 @@ top: 89.5%;
   animation: spinBallOnce 2s;
   animation-fill-mode: forwards;
 }
+.topPokedex{
+  position: absolute;
+  top: -6.5%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/top-pokedex.png");
+  background-size: 17.5% 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 7;
+  /* opacity: 50%; */
+
+}
+.bottomPokedex{
+  position: absolute;
+  top: 8.7%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/bottom-pokedex.png");
+  background-size: 17.5% 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 8;
+  /* opacity: 50%; */
+
+}
+.topInnerPokedex{
+  background-image: url("./assets/pokedex/topinner-pokedex.png");
+
+}
+.centerInnerPokedex{
+  background-image: url("./assets/pokedex/centerinner-pokedex.png");
+
+}
+.bottomInnerPokedex{
+  background-image: url("./assets/pokedex/bottominner-pokedex.png");
+
+}
 
 .displayMap{
   height: 41.7%;
