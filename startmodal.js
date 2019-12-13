@@ -3,7 +3,7 @@ class BegModal {
       this.timeLeft = 3;
       this.timer = null;
       $('.startModal').removeClass('hidden');
-      $('.pokedex').addClass('hidden');
+      $('.mainPokedex').addClass('hidden');
       $('.mapList').on('click', this.dropDownList);
       $('.battleField').on('click', ".locationChoice", this.clickOnMapLocation);
       $('.playButton').on('click', this.displayMapList);
@@ -15,7 +15,8 @@ class BegModal {
 
     displayMapList(){
       $('.playButton').css('opacity', '10%');
-      $('.pokedex').removeClass('hidden');
+      $('.closedPokedex').removeClass('hidden');
+      // $('.mainPokedex').removeClass('hidden');
       $('.playButton').removeClass('animateText');
     }
 
@@ -37,9 +38,9 @@ class BegModal {
       this.fiveSecCountdown();
       this.timer = setInterval(this.fiveSecCountdown, 1000);
 
-      setTimeout(function () {
-        $('.startModal').addClass('hidden');
-      }, 5000);
+      // setTimeout(function () {
+      //   $('.startModal').addClass('hidden');
+      // }, 5000);
     }
 
 
