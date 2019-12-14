@@ -460,40 +460,41 @@ top: 89.5%;
   left: 0%;
   height: 100%;
   width: 100%;
-  background-image: url("./assets/pokedex/open-pokedex.png");
-  background-size: 25% 75%;
+  /* background-image: url("./assets/pokedex/open-pokedex.png"); */
+  background-size: 29.5% 75%;
   background-position: center;
   background-repeat: no-repeat;
+  z-index: 10;
 }
 .closedPokedex{
   position: absolute;
-  top: 1.3%;
+  top: 1.5%;
   left: 0%;
   height: 100%;
   width: 100%;
   background-image: url("./assets/pokedex/closed-pokedex.png");
-  background-size: 17.5% 50%;
+  background-size: 19.5% 59.7%;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 5;
 }
 .spinningPokeball{
   position: absolute;
-  top: 1.7%;
-  left:-0.15%;
+  top: 1.92%;
+  left:-0.18%;
   height: 100%;
   width: 100%;
   background-image: url("./assets/pokedex/pokeball.png");
-  background-size: 8.5% 15.8%;
+  background-size: 9.57% 18.3%;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: 6;
-  /* opacity: 50%; */
+  z-index: 9;
+
 }
 
 @keyframes spinBallOnce {
   0% {
-    transform: rotate(0deg) scale(1.28);
+    transform: rotate(0deg) scale(1.26);
   }
   100% {
     transform: rotate(360deg) scale(1);
@@ -502,60 +503,112 @@ top: 89.5%;
 .spinBallOnce{
   animation: spinBallOnce 2s;
   animation-fill-mode: forwards;
+  z-index: 9;
 }
 .topPokedex{
   position: absolute;
-  top: -6.5%;
+  top: -7.5%;
   left: 0%;
   height: 100%;
   width: 100%;
   background-image: url("./assets/pokedex/top-pokedex.png");
-  background-size: 17.5% 50%;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: 7;
-  /* opacity: 50%; */
-
-}
-.bottomPokedex{
-  position: absolute;
-  top: 8.7%;
-  left: 0%;
-  height: 100%;
-  width: 100%;
-  background-image: url("./assets/pokedex/bottom-pokedex.png");
-  background-size: 17.5% 50%;
+  background-size: 19.5% 60%;
   background-position: center;
   background-repeat: no-repeat;
   z-index: 8;
   /* opacity: 50%; */
-
 }
-.topInnerPokedex{
-  background-image: url("./assets/pokedex/topinner-pokedex.png");
+@keyframes moveUp {
+  0% {
+    top: -7.5%
+  }
+  100% {
+    top: -27.3%
+  }
+}
+.moveUp{
+  animation: moveUp 1s normal ease-out;
+  animation-fill-mode: forwards;
+}
 
+.bottomPokedex{
+  position: absolute;
+  top: 10.7%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/bottom-pokedex.png");
+  background-size: 19.5% 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 8;
+  /* opacity: 50%; */
+}
+
+@keyframes moveDown{
+  0% {
+    top: 10.7%
+  }
+  100% {
+    top: 29.7%
+  }
+}
+.moveDown{
+  animation: moveDown 1s normal ease-out;
+  animation-fill-mode: forwards;
+}
+
+.topInnerPokedex{
+  position: absolute;
+  top: -17%;
+  left: 0.03%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/topinner-pokedex.png");
+  background-size: 19.45% 5%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 7;
 }
 .centerInnerPokedex{
+  position: absolute;
+  top: 1.7%;
+  left: 0.03%;
+  height: 100%;
+  width: 100%;
   background-image: url("./assets/pokedex/centerinner-pokedex.png");
-
+  background-size: 19.45% 33%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 7;
 }
 .bottomInnerPokedex{
+  position: absolute;
+  top: 20%;
+  left: 0.03%;
+  height: 100%;
+  width: 100%;
   background-image: url("./assets/pokedex/bottominner-pokedex.png");
-
+  background-size: 19.45% 5%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 7;
 }
 
 .displayMap{
-  height: 41.7%;
-  width: 16.4%;
+  height: 38.5%;
+  width: 19.3%;
   position: absolute;
-  top: 30.5%;
-  right: 41.8%;
+  top: 32%;
+  right: 40.3%;
+  z-index: 10;
 }
 
 .listOfMapLocations{
   position: absolute;
   top: 17%;
   left: 63%;
+  z-index: 10;
 }
 
 .mapList{
@@ -569,6 +622,7 @@ top: 89.5%;
   outline: none;
   cursor: pointer;
   color: #fff;
+  z-index: 10;
 }
 
 ul{
