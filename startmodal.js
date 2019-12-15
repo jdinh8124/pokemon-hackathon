@@ -40,8 +40,8 @@ class BegModal {
       setTimeout (function (){
         $('.mainPokedex').removeClass('hidden');
       },3000);
-
     }
+
     /** close Pokedex */
     closePokedex = () => {
 
@@ -50,7 +50,6 @@ class BegModal {
         $('.bottomPokedex').addClass('closePokedexUp');
       },3000)
 
-      setTimeout(function(){
         $('.topInnerPokedex').addClass('hidden');
         $('.bottomInnerPokedex').addClass('hidden');
       },3300)
@@ -62,7 +61,6 @@ class BegModal {
       setTimeout(function () {
         $('.centerInnerPokedex').addClass('hidden');
       }, 3900)
-
     }
 
     dropDownList = () => {
@@ -90,8 +88,7 @@ class BegModal {
       }, 5500);
     }
 
-
-    fiveSecCountdown = () => {
+    fiveSecCountdown(){
       const playButton = $('.playButton')
       if (this.timeLeft == -1){
         clearTimeout(this.timer)
