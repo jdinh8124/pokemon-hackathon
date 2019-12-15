@@ -75,24 +75,6 @@ class Pokemon {
       .on("click", function () {
         current.addToArena(thisPokemon);
       });
-
-      //uncomment this code for back facing on the bottom!
-
-    // if (this.playerNum % 2 === 0) {
-    //   $(".element" + this.playerNum).css("background-image", `url(./assets/elementtypes/${typeToUpper}.png`);
-    //   $("#icon" + this.playerNum)
-    //     .css("background-image", 'url(' + this.backSprite + ')')
-    //     .on("click", function () {
-    //       current.addToArena(thisPokemon);
-    //     });
-    // } else {
-    //   $(".element" + this.playerNum).css("background-image", `url(./assets/elementtypes/${typeToUpper}.png`);
-    //   $("#icon" + this.playerNum)
-    //     .css("background-image", 'url(' + this.frontSprite + ')')
-    //     .on("click", function () {
-    //       current.addToArena(thisPokemon);
-    //     });
-    // }
   }
   getTypeWeakness() {
 
@@ -123,7 +105,7 @@ class Pokemon {
       $(".p1Fighter1")
         .toggleClass("hidden")
         .css("background-image", 'url(' + this.frontSprite + ')');
-      $(".topHPBar").css("width", "60%").text(this.hp);
+      $(".topHPBar").css("width", this.hp+ "%").text(this.hp);
     }
   }
   getStats() {
