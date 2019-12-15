@@ -6,53 +6,64 @@ class BegModal {
       $('.mainPokedex').addClass('hidden');
       $('.mapList').on('click', this.dropDownList);
       $('.battleField').on('click', ".locationChoice", this.clickOnMapLocation);
-      $('.playButton').on('click', this.pokedex);
+      $('.playButton').on('click', this.openPokedex);
     }
 
     render = () => {
       $('.playButton').addClass('animateText');
     }
 
-    pokedex() {
+    openPokedex() {
       $('.playButton').css('opacity', '10%');
       $('.playButton').removeClass('animateText');
-
 
       $('.closedPokedex').removeClass('hidden');
       $('.topPokedex').removeClass('hidden');
       $('.bottomPokedex').removeClass('hidden');
       $('.spinningPokeball').removeClass('hidden').addClass('spinBallOnce');
 
-
-
       setTimeout(function () {
         $('.spinningPokeball').addClass('hidden');
       }, 2000);
-
       setTimeout (function (){
         $('.closedPokedex').addClass('hidden')
-        $('.topPokedex').addClass('moveUp');
-        $('.bottomPokedex').addClass('moveDown');
+        $('.topPokedex').addClass('openPokedexUp');
+        $('.bottomPokedex').addClass('openPokedexDown');
       },2100);
-
       setTimeout (function (){
         $('.centerInnerPokedex').removeClass('hidden');
       },1000)
-
       setTimeout (function () {
         $('.topInnerPokedex').removeClass('hidden');
         $('.bottomInnerPokedex').removeClass('hidden');
       },2500);
-
       setTimeout (function (){
         $('.mainPokedex').removeClass('hidden');
       },3000);
 
     }
+    /** close Pokedex */
+    closePokedex = () => {
 
-    // displayMapList = () => {
+      setTimeout(function(){
+        $('.topPokedex').addClass('closePokedexDown');
+        $('.bottomPokedex').addClass('closePokedexUp');
+      },3000)
 
-    // }
+      setTimeout(function(){
+        $('.topInnerPokedex').addClass('hidden');
+        $('.bottomInnerPokedex').addClass('hidden');
+      },3300)
+
+      setTimeout(function () {
+        $('.displayMap').addClass('hidden');
+      }, 3800)
+
+      setTimeout(function () {
+        $('.centerInnerPokedex').addClass('hidden');
+      }, 3900)
+
+    }
 
     dropDownList = () => {
       $('ul').toggleClass('battleField');
@@ -72,9 +83,11 @@ class BegModal {
       this.fiveSecCountdown();
       this.timer = setInterval(this.fiveSecCountdown, 1000);
 
+      this.closePokedex();
+
       setTimeout(function () {
         $('.startModal').addClass('hidden');
-      }, 8000);
+      }, 5500);
     }
 
 

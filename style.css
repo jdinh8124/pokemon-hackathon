@@ -518,7 +518,7 @@ top: 89.5%;
   z-index: 8;
   /* opacity: 50%; */
 }
-@keyframes moveUp {
+@keyframes openPokedexUp {
   0% {
     top: -7.5%
   }
@@ -526,8 +526,22 @@ top: 89.5%;
     top: -27.3%
   }
 }
-.moveUp{
-  animation: moveUp 1s normal ease-out;
+.openPokedexUp{
+  animation: openPokedexUp 1s normal ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes closePokedexDown {
+  0% {
+    top: -27.3%;
+  }
+  100% {
+    top: -7.5;
+  }
+}
+
+.closePokedexDown{
+  animation: closePokedexDown 1s normal ease-out;
   animation-fill-mode: forwards;
 }
 
@@ -545,7 +559,7 @@ top: 89.5%;
   /* opacity: 50%; */
 }
 
-@keyframes moveDown{
+@keyframes openPokedexDown{
   0% {
     top: 10.7%
   }
@@ -553,11 +567,24 @@ top: 89.5%;
     top: 29.7%
   }
 }
-.moveDown{
-  animation: moveDown 1s normal ease-out;
+.openPokedexDown{
+  animation: openPokedexDown 1s normal ease-out;
   animation-fill-mode: forwards;
 }
 
+@keyframes closePokedexUp {
+  0% {
+    top: 29.7%;
+  }
+  100% {
+    top: 10.7;
+  }
+}
+
+.closePokedexUp{
+  animation: closePokedexUp 1s normal ease-out;
+  animation-fill-mode: forwards;
+}
 .topInnerPokedex{
   position: absolute;
   top: -17%;
@@ -601,7 +628,7 @@ top: 89.5%;
   position: absolute;
   top: 32%;
   right: 40.3%;
-  z-index: 10;
+  z-index: 7;
 }
 
 .listOfMapLocations{
