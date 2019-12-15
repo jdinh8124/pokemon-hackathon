@@ -437,7 +437,7 @@ top: 89.5%;
   }
 }
 .animateText{
-  animation: textAnimation 0.5s infinite alternate;
+  animation: textAnimation 0.482s infinite alternate;
 }
 
 .playButton{
@@ -453,10 +453,188 @@ top: 89.5%;
   cursor: pointer;
 }
 
+/*** Pokedex and map ***/
+.mainPokedex{
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-size: 29.5% 75%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 10;
+}
+.closedPokedex{
+  position: absolute;
+  top: 1.5%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/closed-pokedex.png");
+  background-size: 19.5% 59.7%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 5;
+}
+.spinningPokeball{
+  position: absolute;
+  top: 1.92%;
+  left:-0.18%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/pokeball.png");
+  background-size: 9.57% 18.3%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 9;
+
+}
+
+@keyframes spinBallOnce {
+  0% {
+    transform: rotate(0deg) scale(1.26);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+.spinBallOnce{
+  animation: spinBallOnce 2s;
+  animation-fill-mode: forwards;
+  z-index: 9;
+}
+.topPokedex{
+  position: absolute;
+  top: -7.5%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/top-pokedex.png");
+  background-size: 19.5% 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 8;
+  /* opacity: 50%; */
+}
+@keyframes openPokedexUp {
+  0% {
+    top: -7.5%
+  }
+  100% {
+    top: -27.3%
+  }
+}
+.openPokedexUp{
+  animation: openPokedexUp 1s normal ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes closePokedexDown {
+  0% {
+    top: -27.3%;
+  }
+  100% {
+    top: -7.5;
+  }
+}
+
+.closePokedexDown{
+  animation: closePokedexDown 1s normal ease-out;
+  animation-fill-mode: forwards;
+}
+
+.bottomPokedex{
+  position: absolute;
+  top: 10.7%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/bottom-pokedex.png");
+  background-size: 19.5% 60%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 8;
+  /* opacity: 50%; */
+}
+
+@keyframes openPokedexDown{
+  0% {
+    top: 10.7%
+  }
+  100% {
+    top: 29.7%
+  }
+}
+.openPokedexDown{
+  animation: openPokedexDown 1s normal ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes closePokedexUp {
+  0% {
+    top: 29.7%;
+  }
+  100% {
+    top: 10.7;
+  }
+}
+
+.closePokedexUp{
+  animation: closePokedexUp 1s normal ease-out;
+  animation-fill-mode: forwards;
+}
+.topInnerPokedex{
+  position: absolute;
+  top: -17%;
+  left: 0.03%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/topinner-pokedex.png");
+  background-size: 19.45% 5%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 7;
+}
+.centerInnerPokedex{
+  position: absolute;
+  top: 1.7%;
+  left: 0.03%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/centerinner-pokedex.png");
+  background-size: 19.45% 33%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 7;
+}
+.bottomInnerPokedex{
+  position: absolute;
+  top: 20%;
+  left: 0.03%;
+  height: 100%;
+  width: 100%;
+  background-image: url("./assets/pokedex/bottominner-pokedex.png");
+  background-size: 19.45% 5%;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 7;
+}
+
+.displayMap{
+  height: 38.5%;
+  width: 19.3%;
+  position: absolute;
+  top: 32%;
+  right: 40.3%;
+  z-index: 7;
+}
+
 .listOfMapLocations{
   position: absolute;
-  top: 7%;
-  left: 100%;
+  top: 17%;
+  left: 63%;
+  z-index: 10;
 }
 
 .mapList{
@@ -470,6 +648,7 @@ top: 89.5%;
   outline: none;
   cursor: pointer;
   color: #fff;
+  z-index: 10;
 }
 
 ul{
@@ -501,26 +680,6 @@ ul li a {
 ul li a:hover{
   background: #0d7ad0;
 }
-.pokedex{
-  position: absolute;
-  top: 10%;
-  right: 38%;
-  height: 80%;
-  width: 27%;
-  /* background-color: blue; */
-  background-image: url("./assets/pokedex.png");
-  background-size: 90% 120%;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.displayMap{
-  height: 68.8%;
-  width: 71%;
-  position: absolute;
-  top: 12.4%;
-  right: 15.3%;
-  border-radius: 4%;
-}
 
 #staplesCenter,
 #rockefellerCenter,
@@ -534,8 +693,11 @@ ul li a:hover{
 #learningFuze{
   height: 100%;
   width: 100%;
-  border-radius: 3.5%;
+  /* border-radius: 3.5%; */
 }
+
+/*** end of Pokedex and map ***/
+
 
 .restartButton{
   font-size: 30px;

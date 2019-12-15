@@ -1,39 +1,74 @@
 class BegModal {
     constructor () {
-      this.render = this.render.bind(this);
-      this.dropDownList = this.dropDownList.bind(this);
-      this.clickOnMapLocation = this.clickOnMapLocation.bind(this);
-      this.selectMap = this.selectMap.bind(this);
-
-      this.fiveSecCountdown = this.fiveSecCountdown.bind(this);
       this.timeLeft = 3;
       this.timer = null;
-
       $('.startModal').removeClass('hidden');
-      $('.pokedex').addClass('hidden');
+      $('.mainPokedex').addClass('hidden');
       $('.mapList').on('click', this.dropDownList);
       $('.battleField').on('click', ".locationChoice", this.clickOnMapLocation);
-      $('.playButton').on('click', this.displayMapList);
-
-      this.intervalId;
+      $('.playButton').on('click', this.openPokedex);
     }
 
-    render(){
+    render = () => {
       $('.playButton').addClass('animateText');
     }
 
-    displayMapList(){
+    openPokedex() {
       $('.playButton').css('opacity', '10%');
-      $('.pokedex').removeClass('hidden');
       $('.playButton').removeClass('animateText');
+
+      $('.closedPokedex').removeClass('hidden');
+      $('.topPokedex').removeClass('hidden');
+      $('.bottomPokedex').removeClass('hidden');
+      $('.spinningPokeball').removeClass('hidden').addClass('spinBallOnce');
+
+      setTimeout(function () {
+        $('.spinningPokeball').addClass('hidden');
+      }, 2000);
+      setTimeout (function (){
+        $('.closedPokedex').addClass('hidden')
+        $('.topPokedex').addClass('openPokedexUp');
+        $('.bottomPokedex').addClass('openPokedexDown');
+      },2100);
+      setTimeout (function (){
+        $('.centerInnerPokedex').removeClass('hidden');
+      },1000)
+      setTimeout (function () {
+        $('.topInnerPokedex').removeClass('hidden');
+        $('.bottomInnerPokedex').removeClass('hidden');
+      },2500);
+      setTimeout (function (){
+        $('.mainPokedex').removeClass('hidden');
+      },3000);
     }
 
-    dropDownList() {
+    /** close Pokedex */
+    closePokedex = () => {
+
+      setTimeout(function(){
+        $('.topPokedex').addClass('closePokedexDown');
+        $('.bottomPokedex').addClass('closePokedexUp');
+      },3000)
+
+        $('.topInnerPokedex').addClass('hidden');
+        $('.bottomInnerPokedex').addClass('hidden');
+      },3300)
+
+      setTimeout(function () {
+        $('.displayMap').addClass('hidden');
+      }, 3800)
+
+      setTimeout(function () {
+        $('.centerInnerPokedex').addClass('hidden');
+      }, 3900)
+    }
+
+    dropDownList = () => {
       $('ul').toggleClass('battleField');
     }
 
 
-    clickOnMapLocation(event) {
+    clickOnMapLocation = (event) => {
       $('.displayMap').empty();
       $('.playButton').addClass('animateText');
       var locationClick = $(event.currentTarget);
@@ -46,11 +81,12 @@ class BegModal {
       this.fiveSecCountdown();
       this.timer = setInterval(this.fiveSecCountdown, 1000);
 
+      this.closePokedex();
+
       setTimeout(function () {
         $('.startModal').addClass('hidden');
-      }, 5000);
+      }, 5500);
     }
-
 
     fiveSecCountdown(){
       const playButton = $('.playButton')
@@ -65,7 +101,7 @@ class BegModal {
       }
     }
 
-    selectMap(city) {
+    selectMap = (city) => {
       switch (city) {
         case 'LA':
           var location1 = new Maps(34.044227, -118.267254, 'staplesCenter', 15);
