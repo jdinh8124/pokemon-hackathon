@@ -50,6 +50,7 @@ class BegModal {
         $('.bottomPokedex').addClass('closePokedexUp');
       },3000)
 
+      setTimeout(function(){
         $('.topInnerPokedex').addClass('hidden');
         $('.bottomInnerPokedex').addClass('hidden');
       },3300)
