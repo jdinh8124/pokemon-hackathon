@@ -2,10 +2,12 @@ class Pokemon {
   constructor(
     playerNum,
     randomPokeNum,
-    addToArena = () => { }
+    addToArena = () => { },
+    powerScale
   ) {
     this.playerNum = playerNum;
     this.randomPokeNum = randomPokeNum;
+    this.powerScale = powerScale;
     this.name = null;
     this.attack = null;
     this.specialAttack = null;
@@ -52,7 +54,7 @@ class Pokemon {
     this.elementType = response.types[0].type.name;
     this.elementInfo = response.types[0].type.url;
     //recursive func to ensure pokemon is not evolved
-    if (this.experience > 70) {
+    if (this.experience > 70 && this.powerScale < 5) {
       this.randomPokeNum += 1;
       this.getPokemonFromServer();
       return;
@@ -100,7 +102,7 @@ class Pokemon {
       $(".p2Fighter1")
         .toggleClass("hidden")
         .css("background-image", 'url(' + this.backSprite + ')');
-        $(".bottomHPBar").css("width", "60%").text(this.hp);
+        $(".bottomHPBar").css("width", this.hp+"%").text(this.hp);
     } else {
       $(".p1Fighter1")
         .toggleClass("hidden")

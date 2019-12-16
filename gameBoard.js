@@ -17,8 +17,6 @@ class GameBoard{
     this.pokemonPowerScale = 0;
     this.player1Wins = 0;
     this.player2Wins = 0;
-    this.player1Exp = 0;
-    this.player2Exp = 0;
 
     this.ifCritText = "";
     this.p1typeWeakness = null;
@@ -44,7 +42,7 @@ class GameBoard{
   createPokemon(slotNum) {
     let pokeId = this.randomPokemonNumber();
 
-    let pokemon = new Pokemon(slotNum, pokeId, this.addPokemonToArena);
+    let pokemon = new Pokemon(slotNum, pokeId, this.addPokemonToArena, this.pokemonPowerScale);
     return pokemon;
   }
 
@@ -136,8 +134,11 @@ class GameBoard{
   }
 
   pokemonDamage(attackingPokemon, defendingPokemon, attackingInfo){
-    let damage = Math.floor(7 * (attackingInfo[0] / defendingPokemon[attackingInfo[1]]));
+    let damage = Math.floor(8.5 * (attackingInfo[0] / defendingPokemon[attackingInfo[1]]));
     let critHit = this.isCrit();
+    if(this.pokemonPowerScale >= 5){
+      damage += Math.floor(Math.random() * 5 + 1) + 10;
+    }
     // let extraTypeDamage = this.isWeak(defendingPokemon);
     if(critHit){
       console.log("crit");
@@ -194,6 +195,7 @@ class GameBoard{
     this.backgroundMusic.pause();
     this.pokemonToFight = [];
     this.pokemonPool = [];
+    this.pokemonPowerScale++;
     if(pokemon1.hp >= pokemon2.hp){
       $(".textModalContent").text(pokemon1.name + " wins! Nice work, Player 1");
       this.player1Wins++;

@@ -7,7 +7,7 @@ class BegModal {
       this.playButtonHover = this.playButtonHover.bind(this);
       this.stopButtonHover = this.stopButtonHover.bind(this);
       this.fiveSecCountdown = this.fiveSecCountdown.bind(this);
-      this.timeLeft = 5;
+      this.timeLeft = 3;
       this.timer = null;
 
 
@@ -53,7 +53,7 @@ class BegModal {
       setTimeout(function () {
         $('.startModal').addClass('hidden');
 
-      }, 5000);
+      }, 3000);
     }
 
     playButtonHover() {
