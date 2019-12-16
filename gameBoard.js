@@ -1,7 +1,7 @@
 class GameBoard{
   constructor(){
-    this.player1Pokemon = null;
-    this.player2Pokemon = null;
+    this.player1Pokemon = [];
+    this.player2Pokemon = [];
     this.pokemonPool = [];
     this.pokemonToFight = [];
     this.backgroundMusic = new Audio("assets/pokemonbattle.mp3");
@@ -18,7 +18,7 @@ class GameBoard{
     this.player1Wins = 0;
     this.player2Wins = 0;
 
-    this.ifCrit = "";
+    this.ifCritText = "";
     this.p1typeWeakness = null;
     this.p2typeWeakness = null;
     $(".topTrainerIconBox").on("click", this.activateUzair);
@@ -32,6 +32,7 @@ class GameBoard{
     var pokemon4 = this.createPokemon(4);
     var pokemon5 = this.createPokemon(5);
     var pokemon6 = this.createPokemon(6);
+    // pokemon1.render();
 
     this.pokemonPool.push(pokemon1, pokemon2, pokemon3, pokemon4, pokemon5, pokemon6);
     console.log(this.pokemonPool);
@@ -39,9 +40,9 @@ class GameBoard{
   }
 
   createPokemon(slotNum) {
-    var pokeId = this.randomPokemonNumber();
+    let pokeId = this.randomPokemonNumber();
 
-    var pokemon = new Pokemon(slotNum, pokeId, this.addPokemonToArena);
+    let pokemon = new Pokemon(slotNum, pokeId, this.addPokemonToArena, this.pokemonPowerScale);
     return pokemon;
   }
 
@@ -50,14 +51,14 @@ class GameBoard{
     this.backgroundMusic.play();
     console.log("waiting on music")
 
-    var turn = 0;
+    let turn = 0;
     if (this.pokemonToFight[0].speed > this.pokemonToFight[1].speed){
       turn = 1;
     } else {
       turn = 2;
     }
     $(".textModalContent").text("The Battle will begin now!");
-    var toBattle = this;
+    let toBattle = this;
     setTimeout(function(){
       toBattle.pokemonBattle(toBattle.pokemonToFight[0], toBattle.pokemonToFight[1], turn);
     }, 1500);
@@ -65,7 +66,6 @@ class GameBoard{
   }
 
   addPokemonToArena(pokemon){
-    console.log(pokemon.playerNum);
     if(pokemon.playerNum % 2 !== 0){
       $("#icon"+1).off("click").addClass("unselectable");
       $("#icon" + 3).off("click").addClass("unselectable");
@@ -91,7 +91,7 @@ class GameBoard{
    }
 
   pokemonBattle(pokemon1, pokemon2, turn){
-    this.ifCrit = "";
+    this.ifCritText = "";
     if(turn === 1){
       this.pokemonBattleLogic(pokemon1, pokemon2, turn);
       $("#p1Fighter1").toggle();
@@ -101,7 +101,7 @@ class GameBoard{
       $("#p2Fighter1").toggle();
       $("#p2Fighter1").toggle();
     }
-    var current = this;
+    let current = this;
     setTimeout(function () {
       current.checkFaint(pokemon1, pokemon2, turn);
     }, 1500);
@@ -113,7 +113,7 @@ class GameBoard{
     let pokemon1Damage = this.pokemonDamage(attackingPokemon, defendingPokemon, pokemon1Atk);
     this.attackSound.play();
 
-    $(".textModalContent").text(this.ifCrit + attackingPokemon.name + " attacked " + defendingPokemon.name + " for " + pokemon1Damage + " damage.");
+    $(".textModalContent").text(this.ifCritText + attackingPokemon.name + " attacked " + defendingPokemon.name + " for " + pokemon1Damage + " damage.");
     defendingPokemon.hp -= pokemon1Damage;
     if(turn === 1){
       $(".bottomHPBar").css("width", defendingPokemon.hp + "%");
@@ -134,9 +134,12 @@ class GameBoard{
   }
 
   pokemonDamage(attackingPokemon, defendingPokemon, attackingInfo){
-    var damage = Math.floor(7 * (attackingInfo[0] / defendingPokemon[attackingInfo[1]]));
-    var critHit = this.isCrit();
-    // var extraTypeDamage = this.isWeak(defendingPokemon);
+    let damage = Math.floor(8.5 * (attackingInfo[0] / defendingPokemon[attackingInfo[1]]));
+    let critHit = this.isCrit();
+    if(this.pokemonPowerScale >= 5){
+      damage += Math.floor(Math.random() * 5 + 1) + 10;
+    }
+    // let extraTypeDamage = this.isWeak(defendingPokemon);
     if(critHit){
       console.log("crit");
       return Math.floor(damage*1.5);
@@ -146,12 +149,12 @@ class GameBoard{
   }
 
   isCrit(){
-    var randomChance = Math.floor(Math.random() * 10 + 1);
+    let randomChance = Math.floor(Math.random() * 10 + 1);
     if(randomChance === 6){
-      this.ifCrit = "Critical Hit! ";
+      this.ifCritText = "Critical Hit! ";
       return true;
     } else {
-      this.ifCrit = "";
+      this.ifCritText = "";
       return false;
     }
   }
@@ -192,13 +195,12 @@ class GameBoard{
     this.backgroundMusic.pause();
     this.pokemonToFight = [];
     this.pokemonPool = [];
+    this.pokemonPowerScale++;
     if(pokemon1.hp >= pokemon2.hp){
-      console.log(pokemon1.name+"! Player 1 wins");
       $(".textModalContent").text(pokemon1.name + " wins! Nice work, Player 1");
       this.player1Wins++;
       $(".player1Stats").text(this.player1Wins);
     } else {
-      console.log(pokemon2.name +"! Player 2 wins");
       $(".textModalContent").text(pokemon2.name + " wins! Good job, Player 2");
       this.player2Wins++;
       $(".player2Stats").text(this.player2Wins);
@@ -224,7 +226,7 @@ class GameBoard{
 
   activateUzair(){
     console.log("ACTIVATE");
-    var uzairMon = {
+    let uzairoMon = {
       name: "Uzair",
       hp: 69,
       attack: 420,
@@ -237,7 +239,7 @@ class GameBoard{
 
     }
 
-    this.addPokemonToArena(uzairMon);
+    this.addPokemonToArena(uzairoMon);
   }
 
   uzairRender(){
