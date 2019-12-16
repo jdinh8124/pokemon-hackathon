@@ -2,6 +2,7 @@ class BegModal {
   constructor() {
     this.timeLeft = 3;
     this.timer = null;
+    $('.playButton').addClass('animateText');
     $('.startModal').removeClass('hidden');
     $('.mainPokedex').addClass('hidden');
     $('.mapList').on('click', this.dropDownList);
@@ -9,14 +10,9 @@ class BegModal {
     $('.playButton').on('click', this.openPokedex);
   }
 
-  render = () => {
-    $('.playButton').addClass('animateText');
-  }
-
   openPokedex() {
     $('.playButton').css('opacity', '10%');
     $('.playButton').removeClass('animateText');
-
     $('.closedPokedex').removeClass('hidden');
     $('.topPokedex').removeClass('hidden');
     $('.bottomPokedex').removeClass('hidden');
@@ -42,22 +38,18 @@ class BegModal {
     }, 3000);
   }
 
-  /** close Pokedex */
   closePokedex = () => {
     setTimeout(function () {
       $('.topPokedex').addClass('closePokedexDown');
       $('.bottomPokedex').addClass('closePokedexUp');
     }, 3000)
-
     setTimeout(function () {
       $('.topInnerPokedex').addClass('hidden');
       $('.bottomInnerPokedex').addClass('hidden');
     }, 3300)
-
     setTimeout(function () {
       $('.displayMap').addClass('hidden');
     }, 3800)
-
     setTimeout(function () {
       $('.centerInnerPokedex').addClass('hidden');
     }, 4000)
@@ -69,20 +61,15 @@ class BegModal {
 
 
   clickOnMapLocation = (event) => {
-    $('.displayMap').empty();
     $('.playButton').addClass('animateText');
+    $('.listOfMapLocations').addClass('hidden');
+    $('.playButton').css('opacity', '100%')
     const locationClick = $(event.currentTarget);
     const city = locationClick.attr('id');
     this.selectMap(city);
-
-    $('.listOfMapLocations').addClass('hidden');
-
-    $('.playButton').css('opacity', '100%')
     this.fiveSecCountdown();
-    this.timer = setInterval(this.fiveSecCountdown, 1000);
-
     this.closePokedex();
-
+    this.timer = setInterval(this.fiveSecCountdown, 1000);
     setTimeout(function () {
       $('.startModal').addClass('hidden');
     }, 5500);
