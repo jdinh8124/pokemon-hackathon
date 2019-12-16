@@ -2,6 +2,7 @@ class BegModal {
   constructor() {
     this.timeLeft = 3;
     this.timer = null;
+    $('.playButton').addClass('animateText');
     $('.startModal').removeClass('hidden');
     $('.mainPokedex').addClass('hidden');
     $('.mapList').on('click', this.dropDownList);
@@ -9,18 +10,12 @@ class BegModal {
     $('.playButton').on('click', this.openPokedex);
   }
 
-  render = () => {
-    $('.playButton').addClass('animateText');
-  }
-
   openPokedex() {
-    $('.playButton').css('opacity', '10%');
-    $('.playButton').removeClass('animateText');
-
+    $('.playButton').css('opacity', '10%').removeClass('animateText');
     $('.closedPokedex').removeClass('hidden');
     $('.topPokedex').removeClass('hidden');
     $('.bottomPokedex').removeClass('hidden');
-    $('.spinningPokeball').removeClass('hidden').addClass('spinBallOnce');
+    $('.spinningPokeball').removeClass('hidden').addClass('spinPokeball');
 
     setTimeout(function () {
       $('.spinningPokeball').addClass('hidden');
@@ -42,22 +37,18 @@ class BegModal {
     }, 3000);
   }
 
-  /** close Pokedex */
   closePokedex = () => {
     setTimeout(function () {
       $('.topPokedex').addClass('closePokedexDown');
       $('.bottomPokedex').addClass('closePokedexUp');
     }, 3000)
-
     setTimeout(function () {
       $('.topInnerPokedex').addClass('hidden');
       $('.bottomInnerPokedex').addClass('hidden');
     }, 3300)
-
     setTimeout(function () {
       $('.displayMap').addClass('hidden');
     }, 3800)
-
     setTimeout(function () {
       $('.centerInnerPokedex').addClass('hidden');
     }, 4000)
@@ -67,27 +58,20 @@ class BegModal {
     $('ul').toggleClass('battleField');
   }
 
-
   clickOnMapLocation = (event) => {
-    $('.displayMap').empty();
     $('.playButton').addClass('animateText');
-    var locationClick = $(event.currentTarget);
-    var city = locationClick.attr('id');
-    this.selectMap(city);
-
     $('.listOfMapLocations').addClass('hidden');
-
     $('.playButton').css('opacity', '100%')
+    const locationClick = $(event.currentTarget);
+    const city = locationClick.attr('id');
+    this.selectMap(city);
     this.fiveSecCountdown();
-    this.timer = setInterval(this.fiveSecCountdown, 1000);
-
     this.closePokedex();
-
+    this.timer = setInterval(this.fiveSecCountdown, 1000);
     setTimeout(function () {
       $('.startModal').addClass('hidden');
     }, 5500);
   }
-
 
   fiveSecCountdown = () => {
     const playButton = $('.playButton')

@@ -390,24 +390,14 @@ top: 89.5%;
 	width: 50%;
 }
 
-/*** BEGINNING MODAL ***/
-
 .startModal{
-  height: 100%;
-  width: 100%;
   background-color: white;
-  position: absolute;
-  top: 0%;
-  left: 0%;
   z-index: 5;
   background-image: url("./assets/frontmodalwallpaper.jpg");
   background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .titleContainer{
-  position: absolute;
   top: 8%;
   left: 3%;
   height: 42%;
@@ -415,6 +405,7 @@ top: 89.5%;
   display: flex;
   flex-direction: column;
 }
+
 .pokemonTitle{
   display: flex;
   flex-direction: column;
@@ -424,8 +415,6 @@ top: 89.5%;
   width: 100%;
   background-image: url("./assets/pokemonlogo.png");
   background-size: 101% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 @keyframes textAnimation {
@@ -436,6 +425,7 @@ top: 89.5%;
     transform: scale(1.1)
   }
 }
+
 .animateText{
   animation: textAnimation 0.482s infinite alternate;
 }
@@ -453,45 +443,64 @@ top: 89.5%;
   cursor: pointer;
 }
 
-/*** Pokedex and map ***/
-.mainPokedex{
+.startModal,
+.titleContainer,
+.mainPokedex,
+.closedPokedex,
+.spinningPokeball,
+.topPokedex,
+.bottomPokedex,
+.topInnerPokedex,
+.centerInnerPokedex,
+.bottomInnerPokedex,
+.displayMap,
+.listOfMapLocations,
+ul{
   position: absolute;
+}
+
+.startModal,
+.mainPokedex{
   top: 0%;
   left: 0%;
-  height: 100%;
-  width: 100%;
-  background-size: 29.5% 75%;
+}
+
+.startModal,
+.pokemonTitle,
+.mainPokedex,
+.closedPokedex,
+.spinningPokeball,
+.topPokedex,
+.bottomPokedex,
+.topInnerPokedex,
+.centerInnerPokedex,
+.bottomInnerPokedex{
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.mainPokedex{
+  background-size: 29.5% 75%;
   z-index: 10;
 }
+
 .closedPokedex{
-  position: absolute;
   top: 1.5%;
   left: 0%;
-  height: 100%;
-  width: 100%;
   background-image: url("./assets/pokedex/closed-pokedex.png");
   background-size: 19.5% 59.7%;
-  background-position: center;
-  background-repeat: no-repeat;
   z-index: 5;
 }
+
 .spinningPokeball{
-  position: absolute;
   top: 1.92%;
   left:-0.18%;
-  height: 100%;
-  width: 100%;
   background-image: url("./assets/pokedex/pokeball.png");
   background-size: 9.57% 18.3%;
-  background-position: center;
-  background-repeat: no-repeat;
   z-index: 9;
-
 }
 
-@keyframes spinBallOnce {
+@keyframes spinPokeball {
   0% {
     transform: rotate(0deg) scale(1.26);
   }
@@ -499,24 +508,21 @@ top: 89.5%;
     transform: rotate(360deg) scale(1);
   }
 }
-.spinBallOnce{
-  animation: spinBallOnce 2s;
+
+.spinPokeball{
+  animation: spinPokeball 2s;
   animation-fill-mode: forwards;
   z-index: 9;
 }
+
 .topPokedex{
-  position: absolute;
   top: -7.5%;
   left: 0%;
-  height: 100%;
-  width: 100%;
   background-image: url("./assets/pokedex/top-pokedex.png");
   background-size: 19.5% 60%;
-  background-position: center;
-  background-repeat: no-repeat;
   z-index: 8;
-  /* opacity: 50%; */
 }
+
 @keyframes openPokedexUp {
   0% {
     top: -7.5%
@@ -525,6 +531,7 @@ top: 89.5%;
     top: -27.3%
   }
 }
+
 .openPokedexUp{
   animation: openPokedexUp 1s normal ease-out;
   animation-fill-mode: forwards;
@@ -545,17 +552,11 @@ top: 89.5%;
 }
 
 .bottomPokedex{
-  position: absolute;
   top: 10.7%;
   left: 0%;
-  height: 100%;
-  width: 100%;
   background-image: url("./assets/pokedex/bottom-pokedex.png");
   background-size: 19.5% 60%;
-  background-position: center;
-  background-repeat: no-repeat;
   z-index: 8;
-  /* opacity: 50%; */
 }
 
 @keyframes openPokedexDown{
@@ -566,6 +567,7 @@ top: 89.5%;
     top: 29.7%
   }
 }
+
 .openPokedexDown{
   animation: openPokedexDown 1s normal ease-out;
   animation-fill-mode: forwards;
@@ -584,54 +586,40 @@ top: 89.5%;
   animation: closePokedexUp 1s normal ease-out;
   animation-fill-mode: forwards;
 }
+
 .topInnerPokedex{
-  position: absolute;
   top: -17%;
   left: 0.03%;
-  height: 100%;
-  width: 100%;
   background-image: url("./assets/pokedex/topinner-pokedex.png");
   background-size: 19.45% 5%;
-  background-position: center;
-  background-repeat: no-repeat;
   z-index: 7;
 }
+
 .centerInnerPokedex{
-  position: absolute;
   top: 1.7%;
   left: 0.03%;
-  height: 100%;
-  width: 100%;
   background-image: url("./assets/pokedex/centerinner-pokedex.png");
   background-size: 19.45% 33%;
-  background-position: center;
-  background-repeat: no-repeat;
   z-index: 7;
 }
+
 .bottomInnerPokedex{
-  position: absolute;
   top: 20%;
   left: 0.03%;
-  height: 100%;
-  width: 100%;
   background-image: url("./assets/pokedex/bottominner-pokedex.png");
   background-size: 19.45% 5%;
-  background-position: center;
-  background-repeat: no-repeat;
   z-index: 7;
 }
 
 .displayMap{
   height: 38.5%;
   width: 19.3%;
-  position: absolute;
   top: 32%;
   right: 40.3%;
   z-index: 7;
 }
 
 .listOfMapLocations{
-  position: absolute;
   top: 17%;
   left: 63%;
   z-index: 10;
@@ -652,7 +640,6 @@ top: 89.5%;
 }
 
 ul{
-  position: absolute;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -660,6 +647,7 @@ ul{
   transform-origin: top;
   transition: 0.3s;
 }
+
 ul.battleField{
   transform: perspective(1000px) rotateX(-90deg);
 }
@@ -667,6 +655,7 @@ ul.battleField{
 ul li{
   list-style: none;
 }
+
 ul li a {
   display: block;
   padding: 10px;
@@ -677,10 +666,20 @@ ul li a {
   border-bottom: 1px solid rgba(0,0,0,.2);
   transition: 0.5s;
 }
+
 ul li a:hover{
   background: #0d7ad0;
 }
 
+.startModal,
+.mainPokedex,
+.closedPokedex,
+.spinningPokeball,
+.topPokedex,
+.bottomPokedex,
+.topInnerPokedex,
+.centerInnerPokedex,
+.bottomInnerPokedex,
 #staplesCenter,
 #rockefellerCenter,
 #tokyoCentral,
@@ -693,11 +692,7 @@ ul li a:hover{
 #learningFuze{
   height: 100%;
   width: 100%;
-  /* border-radius: 3.5%; */
 }
-
-/*** end of Pokedex and map ***/
-
 
 .restartButton{
   font-size: 30px;
@@ -732,7 +727,6 @@ ul li a:hover{
     bottom: 0;
   }
 }
-
 
 .animationUp{
   animation: attackUp 300ms;

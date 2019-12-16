@@ -5,7 +5,6 @@ function initializeApp() {
   game.gameSetup();
 
   var startingModal = new BegModal ();
-  startingModal.render();
 
   var taco = new Taco
   taco.getTacoFromServer();
