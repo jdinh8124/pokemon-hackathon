@@ -6,5 +6,4 @@ function initializeApp() {
   var startingModal = new BegModal ();
   var taco = new Taco
   taco.getTacoFromServer();
-
 }
