@@ -144,7 +144,4 @@ class BegModal {
     }
   }
 }
-
-//hello
-//hello
-//hello
+//testing
