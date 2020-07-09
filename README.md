@@ -7,13 +7,14 @@
 
 
 ## Live
-- Live Link is under construction
+- [Link to live site](pokemon-hackathon.jamestdinh.com)
 
 ## Summary
 - Pokemon Hackathon
 
 ## Languages Used
 - JavaScript (ES5 & ES6)
+- jQuery
 - HTML5
 - CSS3
 - Pokemon Api
