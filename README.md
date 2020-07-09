@@ -22,6 +22,7 @@
 
 ## Features
 - Users can battle pokemon in turn based fighting
-- Ysers can choose stadium to battle pokemon
+- Users can choose stadium to battle pokemon
 - Weather is affeced based on real life weather
+- If the user wins they will receive a taco recipes 
 
