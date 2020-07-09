@@ -1,4 +1,4 @@
-# Student Grade Table
+# Pokemon Hackathon
 
 > - Maintained by: `James Dinh - jdinh8124`
 
