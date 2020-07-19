@@ -7,7 +7,7 @@
 
 
 ## Live
-- [Link to live site](https://poke-hackathon.jamestdinh.com)
+- Under construction
 
 ## Summary
 - Pokemon Hackathon
