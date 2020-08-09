@@ -24,21 +24,6 @@ class Taco{
     var tacoTitle = $("<h1>").text("Taco Rare Candy")
     var tacoPicture = $("<img>").attr("src", "assets/taco.png").attr("alt", "broken");
       $(".tacoRecipe").append(tacoTitle,tacoPicture, tacoText);
-
-    // this.baseLayerRecipe = response.base_layer.recipe;
-    //   $(".tacoBaseRecipe").text(this.baseLayerRecipe);
-    // if(response.condiment){
-    //   if(response.condiment.recipe){
-    //     this.condimentRecipe = response.condiment.recipe;
-    //     var condimentDiv = $("<div>").addClass("condimentRecipe").text(this.condimentRecipe);
-    //     $(".tacoModal").append(condimentDiv);
-    //   }
-    // }
-    // if(response.mixin){
-    //   if(response.mixin.recipe){
-    //     this.mixinRecipe = response.mixin.recipe;
-    //     var mixinDiv = $("<div>").addClass("mixinRecipe").text(this.mixinRecipe);
-    //     $(".tacoModal").append(mixinDiv);
       }
 
 
