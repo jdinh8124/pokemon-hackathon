@@ -30,4 +30,4 @@
 
 ## Demo
 ![Map Selection](assets/screenshot-poke.PNG)
-![Battle Gif](poke-gif.gif)
+![Battle Gif](assets/poke-gif.gif)
