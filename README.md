@@ -7,10 +7,10 @@
 
 
 ## Live
-- Under construction
+- [Live Link](http://poke-hackathon.jamestdinh.com/)
 
 ## Summary
-- Pokemon Hackathon
+- Pokemon Hackathon created in jQuery using various of APIs that tested our agile, teamwork, and communication skills. The game is our version of the classic Pokemon turn-based fighting game
 
 ## Languages Used
 - JavaScript (ES5 & ES6)
