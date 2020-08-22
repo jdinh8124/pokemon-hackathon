@@ -30,3 +30,19 @@
 ## Demo
 ![Map Selection](assets/screenshot-poke.PNG)
 ![Battle Gif](assets/poke-gif.gif)
+
+## Getting Started
+
+1. Clone this repository from your github to your local computer
+```
+
+git clone https://github.com/jdinh8124/star-wars-connect-four
+
+```
+2. 
+```
+
+run in live server
+
+```
+
