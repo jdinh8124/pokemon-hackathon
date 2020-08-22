@@ -25,5 +25,9 @@
 - Users can battle pokemon in turn based fighting
 - Users can choose stadium to battle pokemon
 - Weather is affeced based on real life weather
-- If the user wins they will receive a taco recipes 
+- If the user wins they will receive a taco recipes
 
+
+## Demo
+![Map Selection](assets/screenshot-poke.PNG)
+![Battle Gif](poke-gif.gif)
